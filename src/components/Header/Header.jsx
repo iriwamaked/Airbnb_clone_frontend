@@ -1,12 +1,31 @@
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import PropTypes from "prop-types";
+import SearchBar from "../SearchBar/SearchBar";
 
-const Header = ({ onOpenModal, user, onLogout, onToggleMap }) => {
+const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated }) => {
   const location = useLocation(); // Получаем текущий URL
+  const [isActive, setIsActive] = useState(false);
+  let timer;
 
+  const handleFocus = () => {
+    clearTimeout(timer);
+    setIsActive(true);
+  };
+
+  const handleBlur = () => {
+    timer = setTimeout(() => setIsActive(false), 3000);
+  };
+  const handleSearch = (query) => {
+    console.log("🔍 Поиск по запросу:", query);
+  };
+  
+  useEffect(() => {
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isActive ? styles.active : ""}`}>
       <div className={styles.row + " " + styles["top-row"]}>
         {/* Логотип */}
         <Link to="/" className={styles.logo}>HomeFU</Link>
@@ -25,30 +44,22 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap }) => {
             <button className={styles.mapButton} onClick={onToggleMap}>📍 Показать на карте</button>
           )}
 
-          {user ? (
-            <div className={styles.userMenu}>
-              <span>Привет, {user.username}</span>
-              <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
-            </div>
-          ) : (
-            // <button className={styles.profileIcon} onClick={onOpenModal}>👤</button>
-            <button className={styles.ovalButton} onClick={onOpenModal}>
-              <span></span>
-              <div className={styles.personContainer}>
-                <div className={styles.personHead}></div>
-                <div className={styles.personBody}></div>
-              </div>
-            </button>
-          )}
+{isAuthenticated ? (
+  <div className={styles.userMenu}>
+    <span>Привет, {user?.username}</span>
+    <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
+  </div>
+) : (
+  <button className={styles.loginBtn} onClick={onOpenModal}>
+  <span className="material-icons">person</span>
+</button>
+
+)}
+
         </div>
       </div>
-      <div className={styles.row + " " + styles["bottom-row"]}>
-        {/* Поисковая строка */}
-        <div className={styles.searchBar}>
-          <input type="text" placeholder="Поиск помещения" />
-          <button>🔍</button>
-        </div>
-
+      <div className={styles.searchContainer} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
+        <SearchBar onFocus={handleFocus} onBlur={handleBlur} onSearch={handleSearch}/>
       </div>
 
     </header>
@@ -58,10 +69,13 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap }) => {
 // Валидация пропсов
 Header.propTypes = {
   onOpenModal: PropTypes.func.isRequired,
-  user: PropTypes.object,
+  user: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.oneOf([null])
+  ]),
   onLogout: PropTypes.func.isRequired,
-  onToggleMap: PropTypes.func.isRequired,
+  onToggleMap: PropTypes.func,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
-
 
 export default Header;

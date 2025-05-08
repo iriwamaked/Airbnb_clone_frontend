@@ -7,37 +7,37 @@ import ListingPage from "./pages/ListingPage/ListingPage";
 import PropertyPage from "./pages/PropertyPage/PropertyPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import VerificationPage from "./pages/VerificationPage/VerificationPage";
-import Modal from "./components/Modal/Modal";
-import SignInForm from "./components/SignInForm/SignInForm";
+import AuthModalWrapper from "./components/Authorization/AuthModalWrapper";
 import { getUser, logout } from "./utils/auth";
+import { useSelector } from "react-redux";
+
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMapVisible, setIsMapVisible] = useState(false); // Переключение карты
   const navigate = useNavigate();
-  const user = getUser();
+  //const user = getUser();
+  const user = useSelector((state) => state.auth.user);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  console.log("🔒 Пользователь в Redux:", user);
+
 
   const handleLogout = () => {
     logout();
     navigate("/");
   };
+  //console.log("App рендерится");
 
   return (
     <div className="app">
       <Header 
         onOpenModal={() => !user && setIsModalOpen(true)} 
         user={user}
+        isAuthenticated={isAuthenticated}
         onLogout={handleLogout}
-        onToggleMap={() => setIsMapVisible(!isMapVisible)} // Переключаем карту
       />
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <SignInForm onClose={() => setIsModalOpen(false)} />
-      </Modal>
-
-      {/* Отображение карты, если включено */}
-      {isMapVisible && <div className="mapContainer">ЗДЕСЬ БУДЕТ КАРТА</div>}
-
+        <AuthModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/listings" element={<ListingPage />} />

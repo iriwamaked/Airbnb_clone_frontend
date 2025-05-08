@@ -1,24 +1,151 @@
-.filters {
+.wrapper {
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
-.filter {
-  background: #f0f0f0;
+.categories {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  flex: 1;
+  padding: 8px 0;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.button {
+  background: transparent;
   border: none;
-  padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 24px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
   cursor: pointer;
-  font-size: 14px;
+  transition: 0.2s ease;
+  min-width: 64px;
+  flex-shrink: 0;
+  color: #7c7c7c;
 }
 
-.filter:hover {
-  background: #ddd;
+.button:hover {
+  color: #111;
+}
+
+.icon {
+  font-size: 26px;
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.iconActive {
+  color: #ff385c;
+}
+
+.label {
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .active {
-  background: #FF385C;
+  color: #111;
+}
+
+.underline {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin-top: 4px;
+}
+
+.scrollArrow {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 8px;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.extraControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 24px;
+  flex-shrink: 0;
+}
+
+.filterButton {
+  background: transparent;
+  border: 1px solid #5a5147;
+  color: #5a5147;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.filterButton:hover {
+  background: #5a5147;
   color: white;
+}
+
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.toggleLabel input[type="checkbox"] {
+  appearance: none;
+  width: 36px;
+  height: 20px;
+  background: #ccc;
+  border-radius: 20px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggleLabel input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggleLabel input[type="checkbox"]:checked {
+  background: #ff385c;
+}
+
+.toggleLabel input[type="checkbox"]:checked::before {
+  transform: translateX(16px);
 }

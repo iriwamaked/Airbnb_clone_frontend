@@ -1,0 +1,56 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background: #6f6558;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #433d35;
+  }
+  .loginLink {
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .loginLink span {
+    color: #ff385c;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .errorMessage {
+    color: red;
+    font-size: 20px; /* больше размер */
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px; /* отступы между буквами */
+    animation: shake 0.3s ease-in-out, blink 1s linear 3;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  

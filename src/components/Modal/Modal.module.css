@@ -13,9 +13,9 @@
 
 .modalContent {
   background: white;
-  padding: 30px;
+  padding: 50px;
   border-radius: 15px;
-  width: 350px;
+  width: 450px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
 }

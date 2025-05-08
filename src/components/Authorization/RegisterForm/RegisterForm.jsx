@@ -3,24 +3,37 @@ import { useNavigate } from "react-router-dom";
 import styles from "./RegisterForm.module.css";
 import SocialSignIn from "../SocialSignIn/SocialSignIn";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { registerUser } from "../../../store/slices/authSlice";
+import { loginUser } from "../../../store/slices/authSlice"; // <-- Обязательно
 
-const RegisterForm = ({ onClose }) => {
+
+
+const RegisterForm = ({ onClose, onSwitch }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Пароли не совпадают!");
       return;
     }
-    localStorage.setItem("user", JSON.stringify({ username: email }));
-    navigate("/profile");
-    onClose();
+  
+    const resultAction = await dispatch(registerUser({ username: email, password }));
+  
+    if (registerUser.fulfilled.match(resultAction)) {
+      console.log("✅ Успешная регистрация, выполняем вход...");
+      const loginResult = await dispatch(loginUser({ username: email, password }));
+      await dispatch(loginUser({ username: email, password }));
+      onClose();
+    } else {
+      alert(`❌ ${resultAction.payload || 'Ошибка регистрации'}`);
+    }
   };
-
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2>Регистрация</h2>
@@ -33,8 +46,9 @@ const RegisterForm = ({ onClose }) => {
       <SocialSignIn />
 
       <p className={styles.loginLink}>
-        Уже есть аккаунт? <span onClick={() => navigate("/sign-in")}>Войти</span>
-      </p>
+  Уже есть аккаунт? <span onClick={onSwitch}>Войти</span>
+</p>
+
     </form>
   );
 };
@@ -42,5 +56,6 @@ const RegisterForm = ({ onClose }) => {
 
 RegisterForm.propTypes={
   onClose: PropTypes.func.isRequired,
+  onSwitch: PropTypes.func.isRequired,
 };
 export default RegisterForm;

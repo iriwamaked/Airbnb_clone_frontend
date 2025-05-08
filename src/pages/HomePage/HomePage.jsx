@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropertyCard from "../../components/PropertyCards/PropertyCard";
-import SearchBar from "../../components/SearchBar/SearchBar";
 import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
 import propertiesData from "../../data/properties"; // ✅ Импортируем данные
 import styles from "./HomePage.module.css";
@@ -28,8 +27,9 @@ const HomePage = () => {
   return (
     <div className={styles.home}>
       <h1 className={styles.title}>Найдите жилье для отпуска</h1>
-      <SearchBar onSearch={handleSearch} />
       <CategoryFilters selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
+      <div className={styles.filtersBar}>
+</div>
 
       <div className={styles.grid}>
         {properties.length > 0 ? (

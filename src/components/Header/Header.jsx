@@ -20,7 +20,7 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated }) =
   const handleSearch = (query) => {
     console.log("🔍 Поиск по запросу:", query);
   };
-  
+
   useEffect(() => {
     return () => clearTimeout(timer);
   }, []);
@@ -44,22 +44,22 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated }) =
             <button className={styles.mapButton} onClick={onToggleMap}>📍 Показать на карте</button>
           )}
 
-{isAuthenticated ? (
-  <div className={styles.userMenu}>
-    <span>Привет, {user?.username}</span>
-    <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
-  </div>
-) : (
-  <button className={styles.loginBtn} onClick={onOpenModal}>
-  <span className="material-icons">person</span>
-</button>
+          {isAuthenticated ? (
+            <div className={styles.userMenu}>
+              <span>Привет, {user?.username}</span>
+              <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
+            </div>
+          ) : (
+            <button className={styles.loginBtn} onClick={onOpenModal}>
+              <span className="material-icons">person</span>
+            </button>
 
-)}
+          )}
 
         </div>
       </div>
       <div className={styles.searchContainer} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
-        <SearchBar onFocus={handleFocus} onBlur={handleBlur} onSearch={handleSearch}/>
+        <SearchBar onFocus={handleFocus} onBlur={handleBlur} onSearch={handleSearch} />
       </div>
 
     </header>

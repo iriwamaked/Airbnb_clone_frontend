@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--body-bg-color, white);
+  background: var(--body-bg-color, #DCDAD6);
   color: var(--text-color,  #433D35);
   font-size: 16px;
   padding-top: 20px;
@@ -14,7 +14,7 @@
 .header.active,
 .header:hover {
   background: #433D35;
-  --text-color: white;
+  --text-color: #DCDAD6;
 }
 
 /* Возвращаем стандартные цвета */
@@ -63,7 +63,7 @@
 .searchContainer {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 /* Правая часть */

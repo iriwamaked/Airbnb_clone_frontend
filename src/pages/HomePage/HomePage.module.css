@@ -1,6 +1,7 @@
 @import url(../../styles/App.module.css);
 .home {
-  padding: 60px 80px;
+  padding: 10px 80px;
+  background-color: #DDDBD7;
 }
 
 .title {

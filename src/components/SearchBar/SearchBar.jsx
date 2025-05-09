@@ -46,8 +46,8 @@ const SearchBar = ({ onFocus, onBlur }) => {
 
   const [isSelectingStart, setIsSelectingStart] = useState(true);
 
- 
-  
+
+
 
 
   const formatDate = (date) =>
@@ -62,7 +62,7 @@ const SearchBar = ({ onFocus, onBlur }) => {
 
   const handleDateChange = (ranges) => {
     const { startDate, endDate } = ranges.selection;
-  
+
     if (isSelectingStart || startDate.getTime() === endDate.getTime()) {
       setDateRange([{ ...ranges.selection }]);
       setIsSelectingStart(false);
@@ -72,7 +72,7 @@ const SearchBar = ({ onFocus, onBlur }) => {
       closeAll();
     }
   };
-  
+
   return (
     <div ref={wrapperRef} className={styles.searchWrapper} tabIndex={0} onFocus={onFocus} >
       <div className={styles.searchBar}>
@@ -98,28 +98,28 @@ const SearchBar = ({ onFocus, onBlur }) => {
 
         {/* Даты */}
         <div className={styles.searchField}>
-  <label>Даты</label>
-  <input
-    type="text"
-    readOnly
-    onClick={() => {
-      setOpen(open === "calendar" ? null : "calendar");
-      setIsSelectingStart(true);
-    }}
-    value={`${formatDate(checkIn)} - ${formatDate(checkOut)}`}
-  />
-  {open === "calendar" && (
-    <div className={styles.calendar}>
-      <DateRange
-        editableDateInputs={true}
-        onChange={handleDateChange}
-        moveRangeOnFirstSelection={false}
-        ranges={dateRange}
-        locale={ru}
-      />
-    </div>
-  )}
-</div>
+          <label>Даты</label>
+          <input
+            type="text"
+            readOnly
+            onClick={() => {
+              setOpen(open === "calendar" ? null : "calendar");
+              setIsSelectingStart(true);
+            }}
+            value={`${formatDate(checkIn)} - ${formatDate(checkOut)}`}
+          />
+          {open === "calendar" && (
+            <div className={styles.calendar}>
+              <DateRange
+                editableDateInputs={true}
+                onChange={handleDateChange}
+                moveRangeOnFirstSelection={false}
+                ranges={dateRange}
+                locale={ru}
+              />
+            </div>
+          )}
+        </div>
 
 
         <div className={styles.divider} />

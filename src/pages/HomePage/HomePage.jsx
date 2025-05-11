@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropertyCard from "../../components/PropertyCards/PropertyCard";
 import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
+import PropertyPageMain from "../PropertyPageMain/PropertyPageMain"
 import propertiesData from "../../data/properties"; // ✅ Импортируем данные
 import styles from "./HomePage.module.css";
 
@@ -30,14 +31,18 @@ const HomePage = () => {
       <div className={styles.filtersBar}>
 </div>
 
-      <div className={styles.grid}>
+      {/* <div className={styles.grid}>
         {properties.length > 0 ? (
           properties.map((property) => <PropertyCard key={property.id} {...property} />)
         ) : (
           <p className={styles.noResults}>Ничего не найдено 😞</p>
         )}
-      </div>
+      </div> */}
+
+      <PropertyPageMain/>
     </div>
+
+    
   );
 };
 

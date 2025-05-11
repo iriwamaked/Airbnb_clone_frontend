@@ -46,10 +46,6 @@ const SearchBar = ({ onFocus, onBlur }) => {
 
   const [isSelectingStart, setIsSelectingStart] = useState(true);
 
-
-
-
-
   const formatDate = (date) =>
     date.toLocaleDateString("ru-RU", {
       day: "2-digit",
@@ -120,7 +116,6 @@ const SearchBar = ({ onFocus, onBlur }) => {
             </div>
           )}
         </div>
-
 
         <div className={styles.divider} />
 

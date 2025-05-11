@@ -10,6 +10,7 @@ import VerificationPage from "./pages/VerificationPage/VerificationPage";
 import AuthModalWrapper from "./components/Authorization/AuthModalWrapper";
 import { getUser, logout } from "./utils/auth";
 import { useSelector } from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

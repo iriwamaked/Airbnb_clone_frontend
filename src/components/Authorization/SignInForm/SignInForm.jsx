@@ -7,6 +7,12 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { loginUser } from "../../../store/slices/authSlice";
 
+const dummyUser = {
+  username: "user",
+  email: "user@com",
+  isVerified: false,
+};
+
 
 const SignInForm = ({ onClose, onSwitch }) => {
   const [username, setUsername] = useState("");

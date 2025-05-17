@@ -1,56 +1,69 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    background: #6f6558;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #433d35;
-  }
-  .loginLink {
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  .loginLink span {
-    color: #ff385c;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .errorMessage {
-    color: red;
-    font-size: 20px; /* больше размер */
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 1px; /* отступы между буквами */
-    animation: shake 0.3s ease-in-out, blink 1s linear 3;
-  }
-  
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  
-  
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: var(--font-main);
+}
+
+input {
+  padding: 10px 6px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  font-size: 15px;
+  background-color: transparent;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+
+button {
+  background: var(--color-accent);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: var(--color-avatar-bg);
+}
+
+.loginLink {
+  text-align: center;
+  font-size: 14px;
+}
+
+.loginLink span {
+  color: #ff385c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  animation: shake 0.3s ease-in-out, blink 1s linear 3;
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-4px); }
+  50%  { transform: translateX(4px); }
+  75%  { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

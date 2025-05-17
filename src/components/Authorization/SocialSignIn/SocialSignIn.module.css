@@ -1,40 +1,42 @@
 .socialButtons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .socialButtons button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .socialButtons button img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-  }
-  
-  .google {
-    background: #db4437;
-    color: white;
-  }
-  
-  .facebook {
-    background: #1877f2;
-    color: white;
-  }
-  
-  .apple {
-    background: black;
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.socialButtons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  border: 1px solid var(--color-accent);
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font-main);
+  background-color: white;
+  color: var(--color-primary-dark);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.socialButtons button:hover {
+  background-color: var(--color-light-bg);
+}
+
+.socialButtons button img {
+  width: 22px;
+  height: 22px;
+}
+
+/* Убираем цвет фона */
+.google,
+.facebook,
+.apple {
+  background: white;
+  border: 1px solid var(--color-accent);
+  color: var(--color-primary-dark);
+}

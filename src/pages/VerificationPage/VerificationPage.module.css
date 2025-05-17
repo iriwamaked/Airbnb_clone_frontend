@@ -1,27 +1,86 @@
 .container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  input {
-    margin-bottom: 10px;
-  }
-  
-  /* button {
-    background: #6f6558;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  } */
-  
-  button:hover {
-    background: #433d35;
-  }
-  
+  text-align: initial;
+
+  padding: 40px 20px;
+  background-color: var(--color-light-bg);
+  font-family: var(--font-main);
+  color: var(--color-primary-dark);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-headings);
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+
+button {
+  background: var(--color-accent);
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: var(--color-avatar-bg);
+}
+.stepWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 60px 40px;
+}
+
+.leftSide {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+}
+
+.rightSide {
+  flex: 1;
+  max-width: 320px;
+  padding: 20px;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 12px;
+  background: var(--color-light-bg);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.toggleButton {
+  padding: 10px 16px;
+  margin: 4px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  background: var(--color-bg);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.toggleButton.active {
+  background: var(--color-primary);
+  color: white;
+}

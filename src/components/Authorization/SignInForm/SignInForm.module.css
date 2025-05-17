@@ -1,79 +1,94 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .inputGroup {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  
-  .submitBtn {
-    background: #ff385c;
-    color: white;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .submitBtn:hover {
-    background: #e11b45;
-  }
-  
-  .registerLink {
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  .registerLink span {
-    color: #ff385c;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .errorMessage {
-    color: red;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    /* УБРАТЬ animation отсюда */
-  }
-  
-  
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  
-  .shake {
-    animation: shake 0.3s ease-in-out, blink 1s linear 3;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: var(--font-main);
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  font-family: var(--font-headings);
+  color: var(--color-primary-dark);
+  margin-bottom: 10px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--color-primary-dark);
+  font-weight: 500;
+}
+
+input {
+  padding: 10px 6px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  font-size: 15px;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+
+.submitBtn {
+  background: var(--color-accent);
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submitBtn:hover {
+  background: var(--color-avatar-bg);
+}
+
+.registerLink {
+  text-align: center;
+  font-size: 14px;
+  font-family: var(--font-main);
+}
+
+.registerLink span {
+  color: #ff385c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* shake эффект только по классу */
+.shake {
+  animation: shake 0.3s ease-in-out, blink 1s linear 3;
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-5px); }
+  50%  { transform: translateX(5px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

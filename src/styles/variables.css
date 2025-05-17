@@ -1,0 +1,11 @@
+:root {
+  /* Цвета */
+  --color-primary-dark: #211E1A;
+  --color-accent: #6F6558;
+  --color-avatar-bg: #433D35;
+  --color-light-bg: #DDDBD7;
+
+  /* Шрифты */
+  --font-main: "Nunito Sans", sans-serif;
+  --font-headings: "Inknut Antiqua", serif;
+}

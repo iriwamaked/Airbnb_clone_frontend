@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--color-light-bg);
-  color: var(--color-avatar-bg);
+  background: var(--body-bg-color, #DCDAD6);
+  color: var(--text-color,  #433D35);
   font-size: 16px;
   padding: 20px 5vw;
   font-family: var(--font-main);
@@ -13,8 +13,13 @@
 /* При фокусе/ховере */
 .header.active,
 .header:hover {
-  background: var(--color-avatar-bg);
-  color: white;
+  background: #433D35;
+  --text-color: white;
+}
+
+/* Возвращаем стандартные цвета */
+.header:not(.active):not(:hover) {
+  --text-color:  #433D35;
 }
 
 /* Логотип */
@@ -58,7 +63,7 @@
 .searchContainer {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 /* Правая зона */

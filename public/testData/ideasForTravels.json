@@ -1,0 +1,11 @@
+{
+    "ideasCategory":[
+        {"key": "popular", "label": "Популярні"},
+        {"key": "art", "label": "Мистецтво та культура"},
+        {"key": "rest", "label": "Відпочинок на відкритому повітрі"},
+        {"key": "mountains", "label": "Гори"},
+        {"key": "beach", "label": "Пляж"},
+        {"key": "categories", "label": "Категорії"},
+        {"key": "whatToDo", "label": "Чим зайнятися"}
+    ]
+}

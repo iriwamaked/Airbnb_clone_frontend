@@ -492,7 +492,210 @@
                     }
                 ]
             }
+        },
+         {
+            "id": "18",
+            "category": ["Особняки", "Люкс"],
+            "attributes": {
+                "title": "Будинок повністю",
+                "location": "Париньи-Ле-Во, Франція",
+                "price": 7030,
+                "rating": 4.97,
+                "description": "Заміський будинок за 2,5 години від Парижу",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-35539258/original/b705aded-2513-4006-81e1-7cc5f5180ad2.jpeg?im_w=1440",
+                    "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MzU1MzkyNTg%3D/original/24430860-7768-462c-9e85-b2f392f113ba.jpeg?im_w=1440",
+                    "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MzU1MzkyNTg%3D/original/f60eb3c7-4091-447e-943a-8c9dd43aa714.jpeg?im_w=1440",
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-35539258/original/f60595a5-021d-43c3-a261-4aa3352a20fe.jpeg?im_w=1440",
+                    "https://a0.muscache.com/im/pictures/8ef177bc-4a6f-4a43-b7e1-758f487ebc59.jpg?im_w=1440"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "19",
+            "category": ["Особняки", "Сільська місцевість"],
+            "attributes": {
+                "title": "Будинок повністю",
+                "location": "Пуйон, Франція",
+                "price": 7402,
+                "rating": 4.98,
+                "description": "Maison Bidas в декількох годинах від місцевих пляжів, гір Піренєєв та Іспанії",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/79472007/f7407983_original.jpg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/79472543/f74c6c78_original.jpg?im_w=1440",
+                    "https://a0.muscache.com/im/pictures/ef3bd27b-c2e1-4ae0-a020-051fa7ff61e1.jpg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/df2fd8d4-8eed-4ac2-944b-6e1d488223e8.jpg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/79474463/14a587cd_original.jpg?im_w=720"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }  
+        },
+        {
+            "id": "20",
+            "category": ["Особняки", "Сільська місцевість"],
+            "attributes": {
+                "title": "Будинок повністю",
+                "location": "Маккомб, США",
+                "price": 5447,
+                "rating": 4.89,
+                "description": "Казковий будинок на вершині пагорбу на красивій фермі",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24891193/original/71610472-7303-4e04-b021-7ec958ce896c.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24891193/original/8a444c35-4248-48eb-9a1a-e195c478cf5e.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24891193/original/a665c305-682a-404b-9a1a-4e6c93ef3fbf.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24891193/original/f3795d02-7f07-4264-a9e2-f1c02ea2b16d.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24891193/original/da7fc498-273c-4c1d-851b-0fd17f418779.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24891193/original/2ce2b3c0-beb1-4b20-b07c-4d8580a80cc3.jpeg?im_w=1200"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }  
+        },
+        {
+            "id": "21",
+            "category": ["Особняки", "Люкс"],
+            "attributes": {
+                "title": "Будинок повністю",
+                "location": "Сарасота, США",
+                "price": 64950,
+                "rating": 5.0,
+                "description": "Казковий будинок на вершині пагорбу на красивій фермі",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1218059986574782038/original/8f70d020-232d-4f87-bb33-76f464c02cba.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1218059986574782038/original/5c50fdec-8f1e-430a-a8e2-4f5014c3b5a7.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1218059986574782038/original/66895935-5365-47c1-a662-6804407ab680.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1218059986574782038/original/af2f6aa1-7562-4886-a9a7-74caf8b0fb4c.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1218059986574782038/original/bfaf48e4-0ed3-4d92-85d8-2e51757328e5.jpeg?im_w=1200"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }  
+        },
+        {
+            "id": "22",
+            "category": ["Особняки", "Люкс"],
+            "attributes": {
+                "title": "Будинок повністю",
+                "location": "Сомерс, США",
+                "price": 2418,
+                "rating": 5.0,
+                "description": "Розкішний ретрит на березі озера біля національного парку Глейшер",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1306011311086744222/original/fc887e10-2236-4439-9825-fd47c672caa5.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1306011311086744222/original/23668da4-1d09-4bab-b8c6-5a3ad27fd864.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1306011311086744222/original/ef9acb9a-6c02-4495-8242-b0be75cce67b.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1306011311086744222/original/457c5ffc-f7f4-4d77-9d43-91327a8d00f8.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1306011311086744222/original/83141aec-952c-4fa9-a84d-382beb1abbcf.jpeg?im_w=720"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }  
+        },
+        {
+            "id": "23",
+            "category": ["Особняки", "Люкс"],
+            "attributes": {
+                "title": "Вілла повністю",
+                "location": "Хаут-Бей, ЮАР",
+                "price": 41794.8,
+                "rating": 5.0,
+                "description": "19 хвилин пішки до пляжу Hout Bay Beach, панорамний басейн",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/cf403bd9-9adc-4474-9fe1-645b39de2f54.jpg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/af2167e6-ad70-48a1-a405-e19740a0c448.jpg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/34991355-cc7f-40ea-97a3-df081aec06f1.jpg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/a6d85944-538c-468f-bf01-04aa0e641e28.jpg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/18c27e32-1a5c-4724-9db6-70305df7533f.jpg?im_w=1200"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }  
+        },
+        {
+            "id": "24",
+            "category": ["У місті", "Від дизайнера"],
+            "attributes": {
+                "title": "Житло повністю",
+                "location": "Варшава, Польща",
+                "price": 3158,
+                "rating": 5.0,
+                "description": "Зручне розташування у центрі Варшави, гарні апартаменти",
+                "images": [
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-1400657867568351252/original/79dc614e-a015-4bfc-90e5-8b140d59290b.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-1400657867568351252/original/f07c0b3d-be80-4c50-ab3d-68637480d831.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-1400657867568351252/original/a05d77d1-0ddc-4b2e-8def-6c2f69caa531.jpeg?im_w=1200",
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-1400657867568351252/original/0574ccc5-7b8a-4303-ba4c-b4bc80f02b6c.jpeg?im_w=720",
+                    "https://a0.muscache.com/im/pictures/miso/Hosting-1400657867568351252/original/51bc1aca-85f3-4aaa-ac53-785b06544ab1.jpeg?im_w=720"
+                ],
+                "_comment": "занятые даты:",
+                "booked_dates": [
+                    {
+                        "from": "2025-08-01",
+                        "to": "2025-08-05"
+                    },
+                    {
+                        "from": "2025-08-10",
+                        "to": "2025-08-12"
+                    }
+                ]
+            }  
         }
-            
     ]
 }

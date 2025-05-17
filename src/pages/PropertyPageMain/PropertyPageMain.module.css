@@ -79,3 +79,13 @@
   width: 1.5rem;
   height: 1.5rem;
 }
+
+.btn-show-more{
+  background-color: #2C2823;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  width: 191px;
+  height: 54px;
+  border-radius: 16px;
+}

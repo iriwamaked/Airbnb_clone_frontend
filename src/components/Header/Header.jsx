@@ -61,40 +61,24 @@ const withUnderline = location.pathname.startsWith("/verification");
             </button>
           )}
 
-          {isAuthenticated ? (
-            <div className={styles.userMenu}>
-              <div className={styles.dropdown}>
-                <button className={styles.profileBtn}>
-                  👤 {user?.username} ▾
-                </button>
-                <div className={styles.dropdownContent}>
-                  <Link to="/profile">Личный кабинет</Link>
-                  <button onClick={onLogout}>Выйти</button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <button className={styles.loginBtn} onClick={onOpenModal}>
-              <span className="material-icons">person</span>
-            </button>
-          )}
+{isAuthenticated ? (
+  <div className={styles.userMenu}>
+    <span>Привет, {user?.username}</span>
+    <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
+  </div>
+) : (
+  <button className={styles.loginBtn} onClick={onOpenModal}>
+  <span className="material-icons">person</span>
+</button>
+
+)}
+
         </div>
       </div>
+      <div className={styles.searchContainer} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
+        <SearchBar onFocus={handleFocus} onBlur={handleBlur} onSearch={handleSearch}/>
+      </div>
 
-      {/* Поисковая строка */}
-      {!isProfilePage && !isVerificationFlow && (
-        <div
-          className={styles.searchContainer}
-          onMouseEnter={handleFocus}
-          onMouseLeave={handleBlur}
-        >
-          <SearchBar
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            onSearch={handleSearch}
-          />
-        </div>
-      )}
     </header>
   );
 };

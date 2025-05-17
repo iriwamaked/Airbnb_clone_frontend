@@ -1,0 +1,80 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "Canmore",
+            "description": "Оренда квартир"
+        },
+         {
+            "id": 2,
+            "name": "Benalmadena",
+            "description": "Оренда будинків"
+        },
+          {
+            "id": 3,
+            "name": "Марбелья",
+            "description": "Оренда будинків"
+        },
+         {
+            "id": 4,
+            "name": "Mixac",
+            "description": "Оренда квартир"
+        },
+        {
+            "id": 5,
+            "name": "Presscott",
+            "description": "Оренда зрубів"
+        },
+         {
+            "id": 6,
+            "name": "Тусон",
+            "description": "Оренда кондомініумів"
+        },
+         {
+            "id": 7,
+            "name": "Jasper",
+            "description": "Помешкання для відпочинку"
+        },
+         {
+            "id": 8,
+            "name": "Маунтін-Вью",
+            "description": "Оренда будинків"
+        },
+         {
+            "id": 9,
+            "name": "Devonport",
+            "description": "Помешкання для відпочинку"
+        },
+         {
+            "id": 10,
+            "name": "Mallacoota",
+            "description": "Помешкання для відпочинку"
+        },
+         {
+            "id": 11,
+            "name": "Анахайм",
+            "description": "Оренда помешкань для офісу"
+        },
+         {
+            "id": 12,
+            "name": "Монтерей",
+            "description": "Помешкання для відпочинку"
+        },
+         {
+            "id": 13,
+            "name": "Paso Robles",
+            "description": "Помешкання для відпочинку"
+        },
+         {
+            "id": 14,
+            "name": "Санта-Барбата",
+            "description": "Оренда заміських будинків"
+        },
+         {
+            "id": 15,
+            "name": "Сонома",
+            "description": "Помешкання для відпочинку"
+        }
+    ]   
+    
+}

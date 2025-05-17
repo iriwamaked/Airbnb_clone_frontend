@@ -16,6 +16,7 @@ import VerificationEntryPage from './pages/VerificationEntryPage/VerificationEnt
 
 import { getUser, logout } from "./utils/auth";
 import { useSelector } from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

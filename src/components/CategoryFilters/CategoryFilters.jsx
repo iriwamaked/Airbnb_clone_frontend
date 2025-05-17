@@ -61,21 +61,27 @@ const CategoryFilters = ({ selectedCategory, onSelectCategory }) => {
           <span className="material-icons">chevron_left</span>
         </button>
       )}
-
-      <div className={styles.categories} ref={scrollRef}>
-        {categories.map(({ id, label, icon }, index) => (
-          <button
-            key={id}
-            className={`${styles.button} ${selectedCategory === id ? styles.active : ''}`}
-            onClick={() => handleCategoryClick(id, index)}
-          >
-            <span className={`material-icons ${styles.icon} ${selectedCategory === id ? styles.iconActive : ''}`}>
-              {icon}
-            </span>
-            <span className={styles.label}>{label}</span>
-            {selectedCategory === id && <div className={styles.underline} />}
-          </button>
-        ))}
+      <div className={styles.stickyBar}>
+        <div className={styles.categories} ref={scrollRef}>
+          {categories.map(({ id, label, icon }, index) => (
+            <button
+              key={id}
+              className={`${styles.button} ${selectedCategory === id ? styles.active : ''}`}
+              onClick={() => handleCategoryClick(id, index)}
+            >
+              <span className={`material-icons ${styles.icon} ${selectedCategory === id ? styles.iconActive : ''}`}>
+                {icon}
+              </span>
+              <span className={styles.label}>{label}</span>
+              {selectedCategory === id && <div className={styles.underline} />}
+            </button>
+          ))}
+        </div>
+        {canScrollRight && (
+        <button className={styles.scrollArrow} onClick={() => scroll(200)}>
+          <span className="material-icons">chevron_right</span>
+        </button>
+      )}
         <div className={styles.extraControls}>
           <button className={styles.filterButton}>
             <span className="material-icons">tune</span> Фільтри
@@ -84,14 +90,11 @@ const CategoryFilters = ({ selectedCategory, onSelectCategory }) => {
             Загальна сума до сплати
             <input type="checkbox" />
           </label>
+
         </div>
       </div>
 
-      {canScrollRight && (
-        <button className={styles.scrollArrow} onClick={() => scroll(200)}>
-          <span className="material-icons">chevron_right</span>
-        </button>
-      )}
+
     </div>
   );
 };

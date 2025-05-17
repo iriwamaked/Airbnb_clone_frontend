@@ -1,70 +1,97 @@
 .footer {
-  background: #2D2D2D;
-  color: white;
-  padding: 40px;
+  background-color: var(--color-light-bg);
+  color: var(--color-primary-dark);
+  padding: 48px;
   font-size: 14px;
-  text-align: center;
 }
 
-.footerTop {
+.ideas h3 {
+  font-family: var(--font-headings);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.navTabs {
   display: flex;
-  justify-content: space-around;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #444;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 8px;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.navTabs span {
+  cursor: pointer;
+  color: #555;
 }
 
-.column h4 {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.navTabs .active {
+  border-bottom: 2px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
 }
 
-.column a {
-  color: #AAAAAA;
-  text-decoration: none;
+.locations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px 24px;
+  margin-top: 24px;
 }
 
-.column a:hover {
-  color: white;
+.locations p {
+  font-size: 13px;
+  color: #777;
+  margin: 0;
 }
 
-/* Соц. сети */
-.footerMiddle {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-
-.social {
-  font-size: 24px;
-  text-decoration: none;
-  color: white;
-}
-
-.social:hover {
-  color: #FF385C;
-}
-
-/* Нижний блок */
-.footerBottom {
+.columns {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  color: #AAAAAA;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 32px 0;
 }
 
-.footerBottom span {
-  font-weight: bold;
+.columns h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.columns p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #aaa;
+  margin: 32px 0;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: #777;
+}
+
+.links {
+  display: flex;
+  gap: 16px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.right i {
+  font-size: 18px;
+  color: var(--color-primary-dark);
   cursor: pointer;
-}
-
-.footerBottom span:hover {
-  color: white;
 }

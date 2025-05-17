@@ -1,0 +1,154 @@
+.wrapper {
+  display: flex;
+  gap: 200px; /* было 40px */
+  padding: 40px 80px;
+  background: var(--color-light-bg);
+  font-family: var(--font-main);
+  color: var(--color-primary-dark);
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  flex-wrap: wrap;
+}
+
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.profileCard {
+  background: var(--color-light-bg);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+  width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--color-avatar-bg);
+  color: white;
+  font-family: var(--font-headings);
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.username {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.role {
+  font-size: 13px;
+  color: #777;
+}
+
+
+.verifyBox {
+  background: var(--color-light-bg);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 300px;
+  outline: 1.5px solid var(--color-primary-dark);
+
+}
+
+.verifyTitle {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.check {
+  color: green;
+  margin-right: 6px;
+}
+
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 16px 0;
+}
+
+.subheading {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.smallText {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.outlineBtn {
+  background: var(--color-light-bg);
+  border: 1px solid var(--color-avatar-bg);
+  color: var(--color-avatar-bg);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+  background: var(--color-avatar-bg);
+  color: white;
+}
+
+.right {
+  flex: 1;
+  max-width: 400px;
+  margin-top: 300px; /* добавлено */
+}
+
+
+.createBox {
+  background: var(--color-light-bg);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.line {
+  margin-bottom: 20px;
+  border: none;
+  border-top: 1px solid var(--color-primary-dark);
+}
+
+.rightTitle {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.filledBtn {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filledBtn:hover {
+  background: var(--color-avatar-bg);
+}

@@ -1,0 +1,102 @@
+
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  background-color: var(--color-light-bg);
+  color: var(--color-primary-dark);
+    margin-left: 25%;
+
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-family: var(--font-main);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 32px;
+  font-family: var(--font-main);
+
+}
+
+.uploadGrid {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.uploadBox {
+  min-width: 250px;
+  height: 160px;
+  border: 2px dashed var(--color-primary-dark);
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-primary-dark);
+  background-color: var(--color-light-bg);
+  transition: border-color 0.2s ease;
+  margin-bottom: 50px;
+}
+
+.uploadBox:hover {
+  border-color: var(--color-light-bg);
+  background-color: var(--color-accent);
+}
+
+.uploadBox span {
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--color-primary-dark);
+    font-family: var(--font-main);
+
+}
+
+.primaryBtn {
+  padding: 10px 20px;
+  background-color: var(--color-accent);
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+    font-family: var(--font-main);
+
+}
+.icon {
+  font-size: 30px;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.small{
+    font-family: var(--font-main);
+    color: var(--color-accent);
+    font-weight:lighter;
+}
+.divider {
+  height: 1px;
+  background-color: var(--color-primary-dark);
+  margin-bottom: 16px ;
+}

@@ -1,0 +1,81 @@
+/* .custom-col {
+  border: none;
+} */
+
+.adaptive-card {
+    --bs-card-border-width: 0;
+    --bs-border-width:0;
+    --bs-body-font-family: "Inknut Antiqua";
+    max-height: 350px;
+    min-width: 272px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: transparent !important;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+
+  
+  .carousel-img {
+    width: 100%;
+    height: auto;
+   aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  
+  .adaptive-body {
+    flex: 1;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+.card-title{
+  font-size: 1rem;
+}
+
+.rating{
+  font-size: 0.81rem;
+}
+
+.card-text{
+  font-size:0.75rem;
+}
+
+:global(.carousel-indicators [data-bs-target]) {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: black !important;
+  margin: 0 4px !important;
+  opacity: 0.8 !important;
+  flex: 0 0 auto !important;
+  margin-bottom: 0 !important;
+}
+
+:global(.carousel-indicators .active) {
+  background-color: #fff !important; /* Цвет активной точки */
+}
+
+/* скрыты по умолчанию */
+:global(.carousel-control-prev-icon),
+:global(.carousel-control-next-icon) {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+}
+
+:global(.carousel:hover .carousel-control-prev-icon),
+:global(.carousel:hover .carousel-control-next-icon) {
+  opacity: 1;
+  /* filter: invert(100%);  */
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}

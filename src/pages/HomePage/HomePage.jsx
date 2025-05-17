@@ -4,8 +4,6 @@ import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
 import PropertyPageMain from "../PropertyPageMain/PropertyPageMain"
 import propertiesData from "../../data/properties"; // ✅ Импортируем данные
 import styles from "./HomePage.module.css";
-import IdeasForTravellsPage from '../../components/IdeasForTravels/IdeasForTravellsPage/IdeasForTravellsPage'
-
 
 const HomePage = () => {
   const [properties, setProperties] = useState(propertiesData);
@@ -29,25 +27,26 @@ const HomePage = () => {
 
   return (
     <div className={styles.home}>
-      <CategoryFilters selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
-      <div className={styles.filtersBar}>
-</div>
-
-      {/* <div className={styles.grid}>
+      <CategoryFilters 
+          className={styles.stickyFilters}
+          selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
+     
+   {/* <div className={styles.grid}>
         {properties.length > 0 ? (
           properties.map((property) => <PropertyCard key={property.id} {...property} />)
         ) : (
           <p className={styles.noResults}>Ничего не найдено 😞</p>
         )}
       </div> */}
+   
 
-      <PropertyPageMain/>
-      <IdeasForTravellsPage/>
-      
+      <PropertyPageMain />
+    
+
 
     </div>
 
-    
+
   );
 };
 

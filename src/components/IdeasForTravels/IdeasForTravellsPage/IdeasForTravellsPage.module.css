@@ -1,0 +1,17 @@
+.container {
+    max-width: 1135px;
+    margin: 0px auto;
+}
+
+h4{
+    font-size: 20px;
+    color: #6F6558;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #6F6558;
+  margin: 0 0 25px 0;
+}

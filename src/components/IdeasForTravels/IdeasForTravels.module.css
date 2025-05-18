@@ -1,0 +1,24 @@
+.customNavLink {
+  position: relative;
+  color: #333 !important; 
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 5px;
+}
+
+.activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #211E1A; 
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #aaa;
+  margin: 32px 0;
+}

@@ -5,7 +5,7 @@ import SimpleFooter from "../SimpleFooter/SimpleFooter";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      {/* Секция “Ідеї для майбутніх поїздок” */}
+      {/* Секция “Ідеї для майбутніх поїздок”
       <div className={styles.ideas}>
         <h3>Ідеї для майбутніх поїздок</h3>
         <div className={styles.navTabs}>
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <hr className={styles.divider} />
+      <hr className={styles.divider} /> */}
 
       {/* Три колонки внизу */}
       <div className={styles.columns}>

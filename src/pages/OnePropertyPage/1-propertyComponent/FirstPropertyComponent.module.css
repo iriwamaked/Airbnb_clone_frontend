@@ -1,0 +1,68 @@
+.h2{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.dot-divider::before {
+  content: "•";           /* точка */
+  margin: 0 0px;         /* отступ слева и справа */
+  color: #48433D;        /* цвет точки */
+  display: inline-block;  /* чтобы margin работал */
+  font-size: 14px;        /* размер точки, можно подправить */
+  vertical-align: middle; /* выравнивание по вертикали */
+}
+
+.centered-link {
+  display: flex;
+  align-items: center; /* Центрирует иконку и текст по вертикали */
+  gap: 6px;            /* Отступ между иконкой и текстом */
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 
+без селектора :global шрифт не меняется, потому что класс  material-symbols-outlined - глобальный*/
+
+.centered-link :global(.material-symbols-outlined) {
+  font-size: 16px;
+} 
+
+
+.underline-text {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  top: -2.5px;
+}
+
+.underline-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.1px; /* насколько ниже опустить линию */
+  width: 100%;
+  height: 0.65px; /* толщина линии */
+  background-color: currentColor; /* или задай цвет вручную */
+}
+
+
+.custom-row {
+  display: flex;
+  justify-content: space-between; /* Расположит левый и правый блок по краям */
+  align-items: center; /* Центрирует по вертикали */
+  flex-wrap: wrap; /* Если на маленьком экране — перенос строк */
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.left-block,
+.right-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}

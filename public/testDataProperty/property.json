@@ -1,0 +1,116 @@
+{
+    "meta": {
+        "status": 200,
+        "message": "Ok"
+    },
+    "data": {
+        "id": 1,
+        "category": [
+            "Центр міста",
+            "Зручне розташування"
+        ],
+        "attributes": {
+            "title": "Cтудія та спальня з панорамою на місто! Біля Моря!",
+            "rating": 4.9,
+            "reviewNumber": 35,
+            "city": "Одеса",
+            "region": "Одеська область",
+            "country": "Україна",
+            "price": 1800,
+            "images": [
+                "./img/1.png",
+                "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTExMTM2NzgzNzE3NjQ0NjE4OQ%3D%3D/original/9f3a694a-29d5-4705-bb72-c039775c392e.jpeg?im_w=720",
+                "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTExMTM2NzgzNzE3NjQ0NjE4OQ%3D%3D/original/d5ebcf0a-6bb7-474c-9166-deffc66754e8.jpeg?im_w=720"
+            ],
+            "shortDescription": "Помешкання для оренди",
+            "owner": "Ілона",
+            "maxGuestsNumber": 4,
+            "bedroomsNumber": 1,
+            "bedNumber": 2,
+            "bathroomsNumber": 1,
+            "advantages": [
+                {
+                    "title": "Окреме робоче місце",
+                    "description": "Зона спільного користування з Wi-Fi, яка добре підходить для роботи"
+                },
+                {
+                    "title": "Cамостійне прибуття",
+                    "description": "Самостійне прибуття за допомогою ключа в сейфі"
+                },
+                {
+                    "title": "Безкоштовне прибуття за допомогою ключча в сейфі",
+                    "description": ""
+                }
+            ],
+            "description": "Вона оснащена кондиціонером і безкоштовним Wi-Fi. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Квартира розміром 24 метри з повністю обладнаною кухнею з мікроволновою піччю, вітальнею, телевізором з плоским екраном, власною ванною кімнатою з правльною машиною, феном. Є Холодильник, плита, чайник. Спальне місце - двоспальне ліжко. На території комплексу розташовані магазин, аптека, кавярня та інші сервіси, поруч...",
+            "placeForSleep": [
+                "https://a0.muscache.com/im/pictures/miso/Hosting-53135948/original/508d4625-2664-4369-84a3-e3a73233f254.jpeg?im_w=720"
+            ],
+            "_comment2": "удобства:",
+            "facilities": [
+                {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "fork_spoon",
+                    "name": "Кухня"
+                },
+                {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "wifi",
+                    "name": "Wi-Fi"
+
+                },
+                {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName":"bed",
+                    "name": "Окреме місце для сну"
+                },
+                {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "tv",
+                    "name": "Телевізон HDTV з 32-дюймовим екраном та стандартне кабельне ТБ Netflix, преміальне кабельне підключення."
+                },
+                {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "elevator",
+                    "name": "Ліфт"
+                },
+                  {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "local_laudry_service",
+                    "name": "Пральна та сушильна машина"
+                },
+                  {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "climate_mini_split",
+                    "name": "Система кондиціонування"
+                },
+                {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "oven-gen",
+                    "name": "Укомплектована кухня"
+                },
+                  {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "self_care",
+                    "name": "Фен"
+                },
+                 {
+                    "IconClass": "material-symbols-outlined",
+                    "IconName": "garage",
+                    "name": "Паркінг"
+                }
+            ],
+            "_comment": "занятые даты:",
+            "booked_dates": [
+                {
+                    "from": "2025-08-01",
+                    "to": "2025-08-05"
+                },
+                {
+                    "from": "2025-08-10",
+                    "to": "2025-08-12"
+                }
+            ]
+        }
+    }
+}

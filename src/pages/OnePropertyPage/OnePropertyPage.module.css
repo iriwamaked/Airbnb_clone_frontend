@@ -1,0 +1,15 @@
+
+.container{
+    max-width: 1135px;
+    margin: 20px auto;
+    
+}
+
+/*Применяем шрифт ко всем єлементам контейнера КРОМЕ тех,
+которые имеют класс material-symbols-outlined ИНАЧЕ
+меняется шрифт Material Symbols Outlined и иконка  отображается словом вместо изображения!
+ПЛОХО! задавать стили в index.css!!!!, ориентируясь только на потребности одной-двух страниц!*/
+.container :not(.material-symbols-outlined):not([class*="material-symbols"]){
+    font-family: "Inknut Antiqua", serif;
+}
+

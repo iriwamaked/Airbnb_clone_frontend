@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropertyCard from "../../components/PropertyCards/PropertyCard";
+// import PropertyCard from "../../components/PropertyCards/PropertyCard";
 import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
 import PropertyPageMain from "../PropertyPageMain/PropertyPageMain"
 import propertiesData from "../../data/properties"; // ✅ Импортируем данные

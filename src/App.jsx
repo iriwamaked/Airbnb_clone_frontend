@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import ListingPage from "./pages/ListingPage/ListingPage";
-import PropertyPage from "./pages/PropertyPage/PropertyPage";
+import PropertyPageMain from "./pages/PropertyPageMain/PropertyPageMain";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import VerificationPage from "./pages/VerificationPage/VerificationPage";
 import AuthModalWrapper from "./components/Authorization/AuthModalWrapper";
@@ -17,6 +17,7 @@ import VerificationEntryPage from './pages/VerificationEntryPage/VerificationEnt
 import { getUser, logout } from "./utils/auth";
 import { useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import OnePropertyPage from "./pages/OnePropertyPage/OnePropertyPage";
 
 
 function App() {
@@ -55,10 +56,11 @@ const useSimpleFooter = ["/profile", "/verification", "/verification-start"].som
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/listings" element={<ListingPage />} />
-        <Route path="/property/:id" element={<PropertyPage />} />
+        <Route path="/property/:id" element={<PropertyPageMain />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/verification" element={<VerificationPage />} />
         <Route path="/verification-start" element={<VerificationEntryPage />} />
+        <Route path="/oneproperty" element={<OnePropertyPage />} />
       </Routes>
     </main>
 

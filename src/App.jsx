@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import OnePropertyPage from "./pages/OnePropertyPage/OnePropertyPage";
 
+import styles from "./styles/App.module.css";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);

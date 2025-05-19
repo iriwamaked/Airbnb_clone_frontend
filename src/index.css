@@ -32,7 +32,7 @@ h1, h2, h3, h4 {
 p, span, li, input, textarea, button {
   font-family: var(--font-main);
 }
-/* .app-layout {
+.app-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -40,6 +40,6 @@ p, span, li, input, textarea, button {
 
 .app-content {
   flex: 1;
-  overflow-y: auto;
-} */
+ 
+}
 

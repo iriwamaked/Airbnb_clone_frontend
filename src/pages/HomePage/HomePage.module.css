@@ -2,6 +2,7 @@
 .home {
   padding: 10px 80px;
   background-color: var(--color-light-bg);
+  /* position: relative; */
   /* font-family: var(--font-main);
   color: var(--color-primary-dark); */
 }

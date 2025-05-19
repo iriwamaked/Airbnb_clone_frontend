@@ -5,6 +5,15 @@
     
 }
 
+.testFloatingBlock{
+    position: relative;
+    min-height: 1200px;
+}
+
+/* .description-container{
+    ma
+} */
+
 /*Применяем шрифт ко всем єлементам контейнера КРОМЕ тех,
 которые имеют класс material-symbols-outlined ИНАЧЕ
 меняется шрифт Material Symbols Outlined и иконка  отображается словом вместо изображения!

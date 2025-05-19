@@ -1,0 +1,11 @@
+.divider {
+  border: none;
+  border-top: 1px solid #47433C;
+  margin: 15px 0;
+  opacity: 1;
+}
+
+.text{
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 400;
+}

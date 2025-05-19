@@ -5,12 +5,13 @@ function FirstPropertyComponent() {
 
     const [isSaved, setIsSaved] = useState(false);
 
-    const toggleSave=()=>{
-        setIsSaved(prev=>!prev);
+    const toggleSave = () => {
+        console.log("Зберегти натиснуто");
+        setIsSaved(prev => !prev);
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles["custom-font-family"]}>
             <h2 className={styles.h2}>Студія та спальня з панорамою на місто! Біля моря!</h2>
             <div className={styles["custom-row"]}>
                 <div className={styles["left-block"]}>
@@ -28,10 +29,10 @@ function FirstPropertyComponent() {
                     </span>
                 </div>
                 <div className={styles["left-block"]}>
-                    
+                    {/* sdf 
                     <Link className={styles["centered-link"]}>
                             <span className="material-symbols-outlined">share</span>
-                            {/* <i className="bi bi-share-fill"></i> */}
+                            {/* <i className="bi bi-share-fill"></i> 
                             <span className={styles["underline-text"]}>Поділитися</span>
                             </Link>
                     <span onClick={toggleSave}
@@ -42,6 +43,18 @@ function FirstPropertyComponent() {
                         </span>
                         <span className={styles["underline-text"]}>Зберегти</span>
                         </span>
+                    */}
+                    <Link className={styles["centered-link"]}>
+                        <i className="bi bi-share"></i>
+                        <span className={styles["underline-text"]}>Поділитися</span>
+                    </Link>
+                    <span onClick={toggleSave}
+                        className={styles["centered-link"]}>
+                        <span className={styles.smallIcon}>
+                            <i className={`bi ${isSaved ? "bi-heart-fill" : "bi-heart"}`}></i>
+                        </span>
+                        <span className={styles["underline-text"]}>Зберегти</span>
+                    </span>
                 </div>
             </div>
         </div>

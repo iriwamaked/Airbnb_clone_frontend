@@ -2,11 +2,13 @@
 которые имеют класс material-symbols-outlined ИНАЧЕ
 меняется шрифт Material Symbols Outlined и иконка  отображается словом вместо изображения!
 ПЛОХО! задавать стили в index.css!!!!, ориентируясь только на потребности одной-двух страниц!*/
-.container :not(.material-symbols-outlined):not([class*="material-symbols"]){
+/* .container :not(.material-symbols-outlined):not([class*="material-symbols"]){
     font-family: "Inknut Antiqua", serif;
+} */
+
+.custom-font-family{
+  font-family: "Inknut Antiqua", serif !important;
 }
-
-
 
 .h2{
     font-size: 20px;
@@ -33,13 +35,13 @@
   cursor: pointer;
 }
 
-/* 
+/* Меняем размер шрифта иконок
 без селектора :global шрифт не меняется, потому что класс  material-symbols-outlined - глобальный*/
 
 .centered-link :global(.material-symbols-outlined) {
-  font-size: 16px;
+ font-size: 16px;
 } 
-
+ 
 
 .underline-text {
   position: relative;
@@ -67,6 +69,7 @@
   margin-top: 8px;
   font-size: 14px;
   font-weight: 500;
+  font-family: "Inknut Antiqua", serif;
 }
 
 .left-block,

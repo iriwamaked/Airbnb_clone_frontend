@@ -10,7 +10,7 @@ function FirstPropertyComponent() {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <h2 className={styles.h2}>Студія та спальня з панорамою на місто! Біля моря!</h2>
             <div className={styles["custom-row"]}>
                 <div className={styles["left-block"]}>

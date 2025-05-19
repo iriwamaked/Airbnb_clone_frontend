@@ -5,11 +5,11 @@ import { Col } from 'react-bootstrap'
 const PropertyImagesComponent = () => {
     return (
         <Row className={styles["container-limited"]}>
-            <Col className="w-50 p-1">
+            <Col xs={12} md={6}>
                 <img className="w-100 h-100 object-fit-cover rounded-4"
                     src="https://a0.muscache.com/im/pictures/0a159d56-b424-4a61-a319-4f968e356974.jpg?im_w=1200" />
             </Col>
-            <Col className="w-50 p-1 ms-1">
+            <Col xs={12} md={6}>
                 <Row className="h-50 mb-1">
                     <Col className="w-50">
                         <img className="w-100 h-100 object-fit-cover rounded-4"

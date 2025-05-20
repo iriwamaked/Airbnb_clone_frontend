@@ -1,179 +1,159 @@
-// Используем библиотеку React DatePicker. Документация - https://reactdatepicker.com/
-//устанавливаем зависимости:
-//npm install react-datepicker
-// npm install date-fns - для работы с локалью
+// Используем библиотеку React DatePicker. Документация: https://reactdatepicker.com/
 
+// Установка зависимостей:
+// npm install react-datepicker
+// npm install date-fns
 
-//испортируем встроенные стили
-import 'react-datepicker/dist/react-datepicker.css';
-//испортируем свои перезаписанные встроенные стили
-import './CustomDatePicker.css';
+import 'react-datepicker/dist/react-datepicker.css'; // встроенные стили
+import './CustomDatePicker.css'; // пользовательские стили
 import styles from './CustomDatePicker.module.css';
-//импортируем сам компонент
-import DatePicker from 'react-datepicker';
-// registerLocale (string, object): loads an imported locale object from date-fns
-import { registerLocale } from 'react-datepicker';
-// испорт украинской локали
-import uk from 'date-fns/locale/uk';
-import {useState, useEffect} from 'react';
 
-//регистрация украинской локали в datePicker
+import DatePicker, { registerLocale } from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
+import { useState, useEffect } from 'react';
+
+// Регистрация украинской локали
 registerLocale('uk', uk);
 
 const CustomDatePicker = ({
-//деструктурируем пропсы
-// начальная и конечная даты выбранного диапазона
   startDate,
   endDate,
-  //колбэк для изменения выбранных дат
   onChange,
-  //массив объектов с занятыми диапазонами ({start,end})
-  busyRanges = [],
-  //флаг, запрещающий выбор прошедших дат
-  disabledPast = false,
-  //границы выбора
+  busyRanges = [],      // Занятые диапазоны [{start, end}]
+  disabledPast = false, // Запрет на выбор прошедших дат
   minDate,
   maxDate,
-  //остальные переданные свойства типа className, id и т.д.
-  ...props
+  ...props              // Остальные свойства: className, id и т.д.
 }) => {
-
   const today = new Date();
-  //минимальная дата, начаниая с которой можно выбирать (по дефолту - сегодня)
   const defaultStart = minDate || today;
-  //максимальная дата (по дефолту + 6 месяцев от текущей даты)
   const defaultMax = maxDate || new Date(today.getFullYear(), today.getMonth() + 6, today.getDate());
 
-  const[internalStart, setInternalStart]=useState(startDate);
+  const [internalStart, setInternalStart] = useState(startDate);
   const [internalEnd, setInternalEnd] = useState(endDate);
-  const [openToDate, setOpenToDate] = useState(startDate||defaultStart);
-  const [errorText, setErrorText]=useState('');
+  const [openToDate, setOpenToDate] = useState(startDate || defaultStart);
+  const [errorText, setErrorText] = useState('');
 
-  
-
-  useEffect(()=>{
-    if(errorText){
-        const timer = setTimeout(()=>setErrorText(''),5000);
-        // const timer = setTimeout(()=>setErrorText('',30000));
-        return()=>clearTimeout(timer);
+  useEffect(() => {
+    if (errorText) {
+      const timer = setTimeout(() => setErrorText(''), 5000);
+      return () => clearTimeout(timer);
     }
-  },[errorText]);
+  }, [errorText]);
 
-  //Проверка на наличие занятых дат в выбранном дипазоное
-  const hasBusyDateInRange=(start,end)=>{
-    if(!start||!end) return false;
+  // Проверка, содержит ли диапазон хотя бы одну занятую дату
+  const hasBusyDateInRange = (start, end) => {
+    if (!start || !end) return false;
 
     const checkDate = new Date(start);
-    while(checkDate<=end){
-        for (const range of busyRanges){
-            const busyStart=new Date(range.start).setHours(0,0,0,0);
-            const busyEnd=new Date(range.end).setHours(0,0,0,0);
-            const current = checkDate.setHours(0,0,0,0);
+    while (checkDate <= end) {
+      for (const range of busyRanges) {
+        const busyStart = new Date(range.start).setHours(0, 0, 0, 0);
+        const busyEnd = new Date(range.end).setHours(0, 0, 0, 0);
+        const current = new Date(checkDate).setHours(0, 0, 0, 0);
 
-            if (current>=busyStart && current <=busyEnd){
-                return true;
-            }
+        if (current >= busyStart && current <= busyEnd) {
+          return true;
         }
-        checkDate.setDate(checkDate.getDate()+1);
+      }
+      checkDate.setDate(checkDate.getDate() + 1);
     }
     return false;
-  }
+  };
 
-
-  // Подсвечивание занятых дат, функция проверет попадает ли день в занятый диапазон
+  // Классы для подсветки дней в календаре
   const getDayClassName = (date) => {
+    const current = new Date(date).setHours(0, 0, 0, 0);
+
     for (const range of busyRanges) {
       const start = new Date(range.start).setHours(0, 0, 0, 0);
       const end = new Date(range.end).setHours(0, 0, 0, 0);
-      const current = new Date(date).setHours(0, 0, 0, 0);
-        //если попадает - возвращает класс для оформления
       if (current >= start && current <= end) {
-        return 'busy-day';
+        return 'busy-day'; // Класс для занятого дня
       }
     }
+
+    // Подсветка диапазона, если пользователь выбрал только начальную дату,
+    // и второй конец диапазона попадает в занятые даты
+    if (internalStart && !internalEnd) {
+      const start = new Date(internalStart).setHours(0, 0, 0, 0);
+      if (start < current && hasBusyDateInRange(new Date(start), new Date(current))) {
+        return 'disabled-range';
+      }
+      if (start > current && hasBusyDateInRange(new Date(current), new Date(start))) {
+        return 'disabled-range';
+      }
+    }
+
     return undefined;
   };
 
-
-    const isRangeBusy = (start, end, busyRanges) => {
-    if (!start || !end) return false;
-
-    const startTime = new Date(start).setHours(0,0,0,0);
-    const endTime = new Date(end).setHours(0,0,0,0);
-
+  // Фильтрация: отключаем возможность выбора занятых дат
+  const isDateAvailable = (date) => {
+    const current = new Date(date).setHours(0, 0, 0, 0);
     for (const range of busyRanges) {
-      const busyStart = new Date(range.start).setHours(0,0,0,0);
-      const busyEnd = new Date(range.end).setHours(0,0,0,0);
-
-      if (!(endTime < busyStart || startTime > busyEnd)) {
-        return true;
+      const start = new Date(range.start).setHours(0, 0, 0, 0);
+      const end = new Date(range.end).setHours(0, 0, 0, 0);
+      if (current >= start && current <= end) {
+        return false;
       }
     }
-
-    return false;
+    return true;
   };
 
+  // Обработчик изменения выбранного диапазона
   const handleChange = (dates) => {
     const [start, end] = dates;
 
     setInternalStart(start);
     setInternalEnd(end);
 
-    if(start&&!end){
-        //покаать месяц выбора
-        setOpenToDate(new Date(start.getFullYear(), start.getMonth(),1));
+    if (start && !end) {
+      // Открываем текущий месяц
+      setOpenToDate(new Date(start.getFullYear(), start.getMonth(), 1));
     }
 
-    //если выбран весь диапазон
-    if(start&&end){
-        if(hasBusyDateInRange(start,end)){
-            // alert("Busy dates");
-            setInternalStart(null);
-            setInternalEnd(null);
-            //сохраняем текущий месяц
-            setOpenToDate(new Date(start.getFullYear(), start.getMonth(),1))
-            setErrorText('У вибраному діапазоні є зайнята дата')
-            return
-        }
+    if (start && end) {
+      if (hasBusyDateInRange(start, end)) {
+        setInternalStart(null);
+        setInternalEnd(null);
+        setOpenToDate(new Date(start.getFullYear(), start.getMonth(), 1));
+        setErrorText('У вибраному діапазоні є зайнята дата');
+        return;
+      }
     }
 
-    // if (end && isRangeBusy(start, end, busyRanges)) {
-    //   alert('Выбранный диапазон содержит занятые даты. Пожалуйста, выберите другой диапазон.');
-    //   onChange([null, null]);
-    //   return;
-    // }
-    // setOpenToDate(start||defaultStart);
-    //Вызов внешнего обработчика
     onChange?.(dates);
   };
 
-  //массив для подсветки начальной и конечной дат выбранного диапазона
+  // Подсветка начальной и конечной дат
   const highlightDates = [];
-  if (startDate) highlightDates.push(startDate);
-  if (endDate && endDate.getTime() !== startDate?.getTime()) highlightDates.push(endDate);
+  if (internalStart) highlightDates.push(internalStart);
+  if (internalEnd && internalEnd.getTime() !== internalStart?.getTime()) highlightDates.push(internalEnd);
 
   return (
     <>
-    <DatePicker
-      locale="uk"                              
-      selected={internalStart || defaultStart}          //выбранная дата (начало диапазони или по-дефолту)
-      onChange={handleChange}                           //обработчик изменения диапазона
-      startDate={internalStart}              
-      endDate={internalEnd}
-      selectsRange                                  //включает выбор диапазона
-      monthsShown={2}                               //показывает 2 месяца рядом
-      minDate={disabledPast ? today : defaultStart} //ограничения по выбору дат
-      maxDate={defaultMax}                             
-      dayClassName={getDayClassName}                //функция для присваивания кастомных классов дням
-      highlightDates={highlightDates}               //массив дат, которые нужно подсветить (начало/конец диапазона)
-      openToDate={openToDate}
-      inline                                        //показывает календарь как встроенный элемент (без поля ввода)
-      dateFormat="dd.MM.yyyy"                       //формат отображения дат
-      {...props}                                    //прокидывание всех остальных доп.свойств
-    />
-    {errorText&&(
+      <DatePicker
+        locale="uk"
+        selected={internalStart || defaultStart}
+        onChange={handleChange}
+        startDate={internalStart}
+        endDate={internalEnd}
+        selectsRange
+        monthsShown={2}
+        minDate={disabledPast ? today : defaultStart}
+        maxDate={defaultMax}
+        dayClassName={getDayClassName}
+        highlightDates={highlightDates}
+        openToDate={openToDate}
+        inline
+        dateFormat="dd.MM.yyyy"
+        filterDate={isDateAvailable}
+        {...props}
+      />
+      {errorText && (
         <div className={styles.tooltipError}>{errorText}</div>
-    )}
+      )}
     </>
   );
 };

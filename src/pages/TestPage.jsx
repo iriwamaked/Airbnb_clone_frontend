@@ -15,10 +15,16 @@ const TestPage=()=>{
 
   return (
      <div>
-        {/* {if(startDate!==null && endDate!==null){
-            <p>{startDate} {endDate}</p>
-        }} */}
-        
+         <div style={{ marginTop: "1rem", display: "flex", gap: "2rem" }}>
+        <div>
+          <strong>Початкова дата:</strong><br />
+          {startDate ? startDate.toLocaleDateString("uk-UA") : "Оберіть дату"}
+        </div>
+        <div>
+          <strong>Кінцева дата:</strong><br />
+          {endDate ? endDate.toLocaleDateString("uk-UA") : "Оберіть дату"}
+        </div>
+      </div>
       <CustomDatePicker
         startDate={startDate}
         endDate={endDate}
@@ -26,6 +32,14 @@ const TestPage=()=>{
         busyRanges={busyRanges}
         disabledPast={true}
       />
+         {/* Вывод выбранного диапазона, если обе даты выбраны */}
+      {startDate && endDate && (
+        <p>
+          Вибраний діапазон:{" "}
+          {startDate.toLocaleDateString("uk-UA")} — {endDate.toLocaleDateString("uk-UA")}
+        </p>
+      )}
+      
     </div>
   );
 };

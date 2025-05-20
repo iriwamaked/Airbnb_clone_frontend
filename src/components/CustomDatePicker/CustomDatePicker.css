@@ -112,3 +112,24 @@ h2.react-datepicker__current-month{
   background-color: transparent !important;
   cursor: not-allowed;
 }
+
+.react-datepicker__day.disabled-range {
+  color: #721c24;
+  cursor: not-allowed;
+  pointer-events: none; /* запрет выбора */
+  position: relative;
+}
+
+.react-datepicker__day.disabled-range:hover{
+    background-color: #999;
+}
+/* .react-datepicker__day.disabled-range::after {
+  content: 'Зайнято';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #dc3545;
+  white-space: nowrap;
+} */

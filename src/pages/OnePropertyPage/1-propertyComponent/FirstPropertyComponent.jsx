@@ -11,7 +11,7 @@ function FirstPropertyComponent() {
     }
 
     return (
-        <div className={styles["custom-font-family"]}>
+        <div className="m-3">
             <h2 className={styles.h2}>Студія та спальня з панорамою на місто! Біля моря!</h2>
             <div className={styles["custom-row"]}>
                 <div className={styles["left-block"]}>

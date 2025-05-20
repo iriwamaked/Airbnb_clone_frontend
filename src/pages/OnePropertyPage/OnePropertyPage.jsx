@@ -16,8 +16,8 @@ const OnePropertyPage = ()=>{
             <PropertyImagesComponent/>
             <Container className="p-0 mt-5">
                 <Row className={styles.testFloatingBlock}>
-                    <Col sm={7}><PropertyDescription/></Col>
-                    <Col sm={5}><Widget/></Col>
+                    <Col md={6} lg={7}><PropertyDescription/></Col>
+                    <Col md={6} lg={5}><Widget/></Col>
                 </Row>
             </Container>
             {/* <div className={styles.testFloatingBlock}>

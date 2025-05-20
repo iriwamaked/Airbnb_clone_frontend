@@ -15,6 +15,10 @@ const TestPage=()=>{
 
   return (
      <div>
+        {/* {if(startDate!==null && endDate!==null){
+            <p>{startDate} {endDate}</p>
+        }} */}
+        
       <CustomDatePicker
         startDate={startDate}
         endDate={endDate}

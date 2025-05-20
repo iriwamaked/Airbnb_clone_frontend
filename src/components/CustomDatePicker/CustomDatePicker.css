@@ -2,8 +2,17 @@
 .react-datepicker{
      font-family: "Nunito Sans", sans-serif;
      font-size: 12px;
+     display: flex;
+     max-width: 600px;
+     border: none;
+     border-radius: 0;
+     /* width: 100%;; */
 }
 
+.react-datepicker__header{
+    background-color: inherit;
+    
+}
 
 .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__month-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__quarter-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__year-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range){
     background-color: #211E1A;
@@ -62,8 +71,44 @@
     text-transform: capitalize; 
 }
 
+.react-datepicker__navigation{
+    top:15px;
+    background-color: inherit;
+}
+
+.react-datepicker__navigation:hover{
+    background-color: inherit;
+}
+
 h2.react-datepicker__current-month{
     font-family: "Nunito Sans", sans-serif !important;
     font-size: 16px;
     text-transform: capitalize; 
+    padding: 5px;
+}
+
+.react-datepicker__month-container {
+  width: 50%; /* чтобы оба месяца влезли в 600px */
+  padding: 0 10px; /* немного отступов между ними */
+}
+
+.react-datepicker__day, .react-datepicker__day-name, .react-datepicker__current-month {
+  line-height: 2.2; /* или px, например 36px */
+}
+
+/* .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header{
+    padding: 20px;
+} */
+
+/* Убираем общий стиль для всех disabled */
+.react-datepicker__day--disabled {
+  text-decoration: none;
+}
+
+/* Добавляем кастомный класс для занятых дат (вручную) */
+.busy-day {
+  color: #999 !important;
+  text-decoration: line-through;
+  background-color: transparent !important;
+  cursor: not-allowed;
 }

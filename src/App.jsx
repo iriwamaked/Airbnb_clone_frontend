@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import OnePropertyPage from "./pages/OnePropertyPage/OnePropertyPage";
 
 import styles from "./styles/App.module.css";
+import TestPage from "./pages/TestPage";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,6 +63,7 @@ const useSimpleFooter = ["/profile", "/verification", "/verification-start"].som
         <Route path="/verification" element={<VerificationPage />} />
         <Route path="/verification-start" element={<VerificationEntryPage />} />
         <Route path="/oneproperty" element={<OnePropertyPage />} />
+          <Route path="/test" element={<TestPage/>} />
       </Routes>
     </main>
 

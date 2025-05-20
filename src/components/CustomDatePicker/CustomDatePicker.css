@@ -1,0 +1,69 @@
+
+.react-datepicker{
+     font-family: "Nunito Sans", sans-serif;
+     font-size: 12px;
+}
+
+
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__month-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__quarter-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range), .react-datepicker__year-text--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range){
+    background-color: #211E1A;
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+    border-radius: 50%;
+    background-color: #211E1A;
+    color: #fff;
+}
+
+.react-datepicker__day--selected:not([aria-disabled=true]):hover, .react-datepicker__day--in-selecting-range:not([aria-disabled=true]):hover,
+.react-datepicker__day--in-range:not([aria-disabled=true]):hover, .react-datepicker__month-text--selected:not([aria-disabled=true]):hover,
+.react-datepicker__day--in-selecting-range:not([aria-disabled=true]):hover, .react-datepicker__month-text--in-range:not([aria-disabled=true]):hover,
+.react-datepicker__quarter-text--selected:not([aria-disabled=true]):hover, .react-datepicker__quarter-text--in-selecting-range:not([aria-disabled=true]):hover,
+.react-datepicker__quarter-text--in-range:not([aria-disabled=true]):hover, .react-datepicker__year-text--in-range:not([aria-disabled=true]):hover,
+.react-datepicker__year-text--selected:not([aria-disabled=true]):hover, .react-datepicker__year-text--in-selecting-range:not([aria-disabled=true]):hover{
+    background-color: #211E1A;
+    border-radius: 50%;
+}
+
+
+/* Первая дата диапазона - круглая с нужным цветом */
+.react-datepicker__day--range-start {
+  background-color: #211E1A !important;
+  color: white !important;
+  border-radius: 50% !important;
+  border: none !important;
+}
+
+/* Последняя дата диапазона - тоже круглая */
+.react-datepicker__day--range-end {
+  background-color: #211E1A !important;
+  color: white !important;
+  border-radius: 50% !important;
+  border: none !important;
+}
+
+/* Даты между началом и концом - подсвечены фоном, без скругления */
+.react-datepicker__day--in-range {
+  background-color: #211E1A !important; /* светлый фон для диапазона */
+  color: white!important;
+  border-radius: 50% !important;
+}
+
+/* Даты занятых периодов - затемнены и перечеркнуты */
+.react-datepicker__day--disabled {
+  color: #999 !important;
+  text-decoration: line-through;
+  background-color: transparent !important;
+  cursor: not-allowed;
+}
+
+.react-datepicker__day-name{
+    font-size: 14px;
+    text-transform: capitalize; 
+}
+
+h2.react-datepicker__current-month{
+    font-family: "Nunito Sans", sans-serif !important;
+    font-size: 16px;
+    text-transform: capitalize; 
+}

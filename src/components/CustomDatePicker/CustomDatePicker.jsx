@@ -5,12 +5,12 @@
 // npm install date-fns
 
 import 'react-datepicker/dist/react-datepicker.css'; // встроенные стили
-import './CustomDatePicker.css'; // пользовательские стили
+import './CustomDatePicker.css'; // пользовательские стили (через module.css не применяются!!!)
 import styles from './CustomDatePicker.module.css';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
 import uk from 'date-fns/locale/uk';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Регистрация украинской локали
 registerLocale('uk', uk);
@@ -32,14 +32,60 @@ const CustomDatePicker = ({
   const [internalStart, setInternalStart] = useState(startDate);
   const [internalEnd, setInternalEnd] = useState(endDate);
   const [openToDate, setOpenToDate] = useState(startDate || defaultStart);
-  const [errorText, setErrorText] = useState('');
+//   const [errorText, setErrorText] = useState('');
 
+ //переменная для количества месяцев календаря, которые отображаются (по умолчанию - два)
+  const [monthsToShow, setMonthsToShow] = useState(2); 
+
+  // Следим за шириной окна (АДАПТИВНОСТЬ)
   useEffect(() => {
-    if (errorText) {
-      const timer = setTimeout(() => setErrorText(''), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [errorText]);
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      setMonthsToShow(screenWidth < 768 ? 1 : 2); // < 768px — показывать 1 месяц
+    };
+
+    handleResize(); // вызывать при монтировании
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  //добавлен ref на обертку календаря
+  const pickerRef=useRef(null);
+
+//   useEffect(() => {
+//     if (errorText) {
+//       const timer = setTimeout(() => setErrorText(''), 5000);
+//       return () => clearTimeout(timer);
+//     }
+//   }, [errorText]);
+
+  //добавлено событие (при клике на пустое место календаря сбрасывается выбранный диапазон)
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (
+        //проверки, чтобы рекция была только на те части календаря, которые не являются датами
+        pickerRef.current &&
+        pickerRef.current.contains(e.target) &&
+        !e.target.classList.contains('react-datepicker__day') &&
+        !e.target.classList.contains('react-datepicker__day--selected') &&
+        !e.target.classList.contains('react-datepicker__day--in-range') &&
+        !e.target.classList.contains('react-datepicker__day-name') &&
+        !e.target.classList.contains('react-datepicker__current-month') 
+        //если был клик ВНЕ календаря тоже очищаем даты
+        || !pickerRef.current?.contains(e.target)
+      ) {
+        setInternalStart(null);
+        setInternalEnd(null);
+        onChange?.([null, null]);
+        console.log("PickRef Works");
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [onChange]);
+
 
   // Проверка, содержит ли диапазон хотя бы одну занятую дату
   const hasBusyDateInRange = (start, end) => {
@@ -118,7 +164,7 @@ const CustomDatePicker = ({
         setInternalStart(null);
         setInternalEnd(null);
         setOpenToDate(new Date(start.getFullYear(), start.getMonth(), 1));
-        setErrorText('У вибраному діапазоні є зайнята дата');
+        // setErrorText('У вибраному діапазоні є зайнята дата');
         return;
       }
     }
@@ -132,15 +178,16 @@ const CustomDatePicker = ({
   if (internalEnd && internalEnd.getTime() !== internalStart?.getTime()) highlightDates.push(internalEnd);
 
   return (
-    <>
+    //чтобы ref сработал, надо компонент обернуть в div и ему задать атрибут
+    <div ref={pickerRef}>
       <DatePicker
         locale="uk"
-        selected={internalStart || defaultStart}
+        selected={internalStart || null} 
         onChange={handleChange}
         startDate={internalStart}
         endDate={internalEnd}
         selectsRange
-        monthsShown={2}
+        monthsShown={monthsToShow}
         minDate={disabledPast ? today : defaultStart}
         maxDate={defaultMax}
         dayClassName={getDayClassName}
@@ -151,10 +198,10 @@ const CustomDatePicker = ({
         filterDate={isDateAvailable}
         {...props}
       />
-      {errorText && (
+      {/* {errorText && (
         <div className={styles.tooltipError}>{errorText}</div>
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 

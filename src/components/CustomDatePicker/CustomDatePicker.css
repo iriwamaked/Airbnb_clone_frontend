@@ -3,7 +3,8 @@
      font-family: "Nunito Sans", sans-serif;
      font-size: 12px;
      display: flex;
-     max-width: 600px;
+    max-width: fit-content;
+     /* max-width: 600px; */
      border: none;
      border-radius: 0;
      /* width: 100%;; */
@@ -133,3 +134,70 @@ h2.react-datepicker__current-month{
   color: #dc3545;
   white-space: nowrap;
 } */
+
+.react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected{
+    background-color: inherit;
+}
+
+@media screen and (max-width: 600px){
+    .react-datepicker, .react-datepicker__day-name, 
+    .react-datepicker__current-month, .react-datepicker__day  {
+     font-family: "Inknut Antiqua", sans-serif;
+     background-color: #6F6558;
+     font-size: 12px; 
+        font-weight: 400;
+        color:white !important;
+    }
+
+    .react-datepicker__day--disabled{
+        color: grey !important;
+    }
+.react-datepicker__month-container {
+    width: 100%;
+}
+      h2.react-datepicker__current-month{
+    font-family: "Inknut Antiqua", sans-serif !important;
+    font-size: 12px !important; 
+    font-weight: 400 !important;
+    margin: 0 auto !important;
+    line-height: 1;
+    text-align: center;
+    width: 100%;         /* Сделать ширину блока на 100% */
+    display: block !important;  /* Принудительно установить блочный */
+  }
+
+ .react-datepicker__navigation {
+  position: absolute; /* убедись, что позиционирование абсолютное */
+  top: 10px; /* подкорректируй для выравнивания по вертикали */
+  height: 30px;   /* проверь размеры, если нужно */
+  width: 30px;
+  line-height: 30px;
+  /* Убери лишние margin/padding, которые могут смещать */
+  margin: 0;
+  padding: 0;
+  /* Можно подкорректировать transform для стрелок, если съехали */
+}
+
+/* Левая кнопка */
+.react-datepicker__navigation--previous {
+  left: 10px;  /* расстояние от левого края */
+  right: auto;
+}
+
+/* Правая кнопка */
+.react-datepicker__navigation--next {
+  right: 10px; /* расстояние от правого края */
+  left: auto;
+}
+
+.react-datepicker__day--selected:not([aria-disabled=true]):hover, .react-datepicker__day--in-selecting-range:not([aria-disabled=true]):hover,
+.react-datepicker__day--in-range:not([aria-disabled=true]):hover, .react-datepicker__month-text--selected:not([aria-disabled=true]):hover,
+.react-datepicker__day--in-selecting-range:not([aria-disabled=true]):hover, .react-datepicker__month-text--in-range:not([aria-disabled=true]):hover,
+.react-datepicker__quarter-text--selected:not([aria-disabled=true]):hover, .react-datepicker__quarter-text--in-selecting-range:not([aria-disabled=true]):hover,
+.react-datepicker__quarter-text--in-range:not([aria-disabled=true]):hover, .react-datepicker__year-text--in-range:not([aria-disabled=true]):hover,
+.react-datepicker__year-text--selected:not([aria-disabled=true]):hover, .react-datepicker__year-text--in-selecting-range:not([aria-disabled=true]):hover{
+    background-color: #211E1A;
+    border-radius: 50%;
+}
+
+}

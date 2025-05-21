@@ -49,7 +49,7 @@ const PropertyDescription = () => {
             <hr className={styles.divider} />
 
             <Row className={`mb-4 ${styles.text}`}>
-                <Link className={`my-4 ${styles["custom-link"]}`}>Показати більше</Link>
+                <Link className={`my-4 ${styles["custom-link"]}`}>Місце для сну</Link>
                 <Col>
                  <img className={styles.img} src="https://a0.muscache.com/im/pictures/e716e3eb-a07f-4b94-ae48-569fb8e581ba.jpg?im_w=720"/>
                 </Col>

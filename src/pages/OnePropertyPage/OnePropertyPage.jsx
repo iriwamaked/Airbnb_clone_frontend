@@ -24,6 +24,7 @@ const OnePropertyPage = ()=>{
                 <PropertyDescription/>
                 <Widget/>
             </div> */}
+            <hr className={`my-3 ${styles.divider}`} />
             
         </div>
     )

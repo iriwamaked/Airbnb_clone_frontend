@@ -3,10 +3,11 @@
      font-family: "Nunito Sans", sans-serif;
      font-size: 12px;
      display: flex;
-    max-width: fit-content;
+    /* max-width: fit-content; */
      /* max-width: 600px; */
      border: none;
      border-radius: 0;
+     background-color: inherit;
      /* width: 100%;; */
 }
 
@@ -139,7 +140,7 @@ h2.react-datepicker__current-month{
     background-color: inherit;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 993px){
     .react-datepicker, .react-datepicker__day-name, 
     .react-datepicker__current-month, .react-datepicker__day  {
      font-family: "Inknut Antiqua", sans-serif;

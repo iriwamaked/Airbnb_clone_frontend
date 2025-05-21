@@ -1,6 +1,7 @@
 import styles from './PropertyDescription.module.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropertyCalendar from '../5-propertyComponentCalendar/PropertyCalendar';
 
 const PropertyDescription = () => {
     return (
@@ -116,6 +117,8 @@ const PropertyDescription = () => {
                 </div>
 
                   <hr className={`my-4 ${styles.divider}`} />
+
+                  <PropertyCalendar/>
             </Row>
         </Container>
     );

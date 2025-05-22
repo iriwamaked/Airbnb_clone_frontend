@@ -32,9 +32,21 @@ const SignInForm = ({ onClose, onSwitch }) => {
     const resultAction = await dispatch(loginUser({ username, password }));
   
     if (loginUser.fulfilled.match(resultAction)) {
-      console.log("✅ Успешный вход:", resultAction.payload);
-      setErrorMessage(""); // очистить ошибку
-      navigate("/profile");
+  const user = resultAction.payload.user;
+
+  // 👉 если нет профиля или он не заполнен
+  const isProfileEmpty = !user.profile || Object.values(user.profile).every(v => v === "" || (Array.isArray(v) && v.length === 0));
+
+  // 👉 если не верифицирован
+  const isNotVerified = user.isVerified === false;
+
+  if (isProfileEmpty) {
+    navigate("/profile");
+  } else if (isNotVerified) {
+    navigate("/verification");
+  } else {
+    navigate("/home"); // или /dashboard, как тебе надо
+  }
       onClose();
     } else {
       setErrorMessage(resultAction.payload || "Ошибка входа");

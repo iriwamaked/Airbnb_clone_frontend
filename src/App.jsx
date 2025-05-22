@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import SimpleFooter from "./components/SimpleFooter/SimpleFooter";
+import { logout } from "./store/slices/authSlice"; // <-- правильно
+import { useDispatch } from "react-redux";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -14,7 +16,6 @@ import AuthModalWrapper from "./components/Authorization/AuthModalWrapper";
 import VerificationEntryPage from './pages/VerificationEntryPage/VerificationEntryPage';
 
 
-import { getUser, logout } from "./utils/auth";
 import { useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,6 +24,8 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMapVisible, setIsMapVisible] = useState(false); // Переключение карты
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   //const user = getUser();
   const user = useSelector((state) => state.auth.user);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -34,10 +37,11 @@ const useSimpleFooter = ["/profile", "/verification", "/verification-start"].som
   pathname.startsWith(path)
 );
 
-  const handleLogout = () => {
-    logout();
-    navigate("/");
-  };
+ const handleLogout = () => {
+  dispatch(logout());     
+  navigate("/");
+};
+
   //console.log("App рендерится");
 
   return (

@@ -1,7 +1,7 @@
 import styles from "./StepDocumentUploadMethod.module.css";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { nextStep } from "../../../store/slices/verificationSlice";
+import { nextStep,prevStep } from "../../../store/slices/verificationSlice";
 
 const StepDocumentUploadMethod = () => {
   const dispatch = useDispatch();

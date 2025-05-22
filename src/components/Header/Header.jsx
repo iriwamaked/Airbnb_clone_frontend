@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import PropTypes from "prop-types";
 import SearchBar from "../SearchBar/SearchBar";
@@ -12,12 +13,20 @@ const withUnderline = location.pathname.startsWith("/verification");
 
 
   const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
+
   let timer;
 
   const handleFocus = () => {
     clearTimeout(timer);
     setIsActive(true);
   };
+
+const handleLogoutClick = () => {
+  console.log("⛔ Logout initiated");
+  onLogout();        // Redux logout
+  navigate("/");     // Redirect to home
+};
 
   const handleBlur = () => {
     timer = setTimeout(() => setIsActive(false), 3000);
@@ -62,16 +71,27 @@ const withUnderline = location.pathname.startsWith("/verification");
           )}
 
 {isAuthenticated ? (
-  <div className={styles.userMenu}>
-    <span>Привет, {user?.username}</span>
-    <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
+  <div className={styles.userAvatarWrapper}>
+    <Link to="/profile">
+      {user.avatar ? (
+        <img src={user.avatar} alt="avatar" className={styles.userAvatarImg} />
+      ) : (
+        <div className={styles.userAvatarCircle}>
+          {user.username?.charAt(0).toUpperCase()}
+        </div>
+      )}
+    </Link>
+    <button onClick={handleLogoutClick} className={styles.logoutIcon}>
+  <span className="material-icons">logout</span>
+</button>
+
   </div>
 ) : (
   <button className={styles.loginBtn} onClick={onOpenModal}>
-  <span className="material-icons">person</span>
-</button>
-
+    <span className="material-icons">person</span>
+  </button>
 )}
+
 
         </div>
       </div>

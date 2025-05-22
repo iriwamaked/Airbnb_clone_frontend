@@ -8,6 +8,27 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ username, password }, thunkAPI) => {
     try {
+      // === Шаг 1: пробуем локальный JSON ===
+      const localRes = await fetch("/usersData.json");
+      const users = await localRes.json();
+
+      const localUser = users.find(
+        (u) =>
+          (u.username === username || u.email === username) &&
+          u.password === password
+      );
+
+      if (localUser) {
+        console.log("🔐 Авторизация через usersData.json");
+        const { password: _, ...safeUser } = localUser;
+
+        return {
+          token: "dummy-token-json", // для совместимости
+          user: safeUser,
+        };
+      }
+
+      // === Шаг 2: если не найдено — API авторизация ===
       const response = await api.post(endpoints.login, null, {
         params: {
           Email: username,
@@ -17,6 +38,7 @@ export const loginUser = createAsyncThunk(
           Accept: "text/plain",
         }
       });
+
       const token = response.data;
       const decoded = parseJwt(token);
       const userId = decoded?.sub;
@@ -25,31 +47,28 @@ export const loginUser = createAsyncThunk(
         params: { id: userId },
         headers: { Accept: "text/plain" },
       });
-      
+
       if (userResponse.status === 204 || !userResponse.data) {
-        console.warn("⚠️ Пользователь не найден по id:", userId);
-        return thunkAPI.rejectWithValue(" Пользователь не найден");
+        return thunkAPI.rejectWithValue("Пользователь не найден");
       }
-      
+
       let user = userResponse.data;
       if (typeof user === "string") {
         try {
           user = JSON.parse(user);
         } catch (e) {
-          console.error("❌ Не удалось распарсить userResponse как JSON:", user);
-          throw e;
+          throw new Error("Ошибка парсинга ответа от API");
         }
       }
 
-
-
-      
       return { token, user };
+
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data?.message || 'Login failed');
+      return thunkAPI.rejectWithValue(error.response?.data?.message || 'Ошибка входа');
     }
   }
 );
+
 const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ username, password }, { rejectWithValue }) => {

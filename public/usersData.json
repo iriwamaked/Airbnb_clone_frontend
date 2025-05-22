@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "email": "admin@example.com",
+    "password": "admin123",
+    "role": "admin",
+    "avatar": "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    "id": 2,
+    "username": "katya98",
+    "email": "katya@example.com",
+    "password": "katyaPass",
+    "role": "user",
+    "isVerified": true,
+    "avatar": "https://i.pravatar.cc/150?img=47",
+    "profile": {
+      "school": "Kyiv Polytechnic Institute",
+      "location": "Kyiv, Ukraine",
+      "birthdate": "1998-10-04",
+      "hobbies": "Reading, Yoga",
+      "lifeGoals": "Become a UI/UX designer",
+      "timeSpentOn": "Sketching ideas",
+      "profession": "Graphic Designer",
+      "languages": ["Ukrainian", "English"],
+      "favSong": "Imagine Dragons - Believer",
+      "funFact": "Afraid of balloons",
+      "bioTitle": "Design is life",
+      "pets": "Cat",
+      "about": "I'm a creative soul trying to make things beautiful."
+    }
+  },
+  {
+    "id": 3,
+    "username": "ivan2025",
+    "email": "ivan@example.com",
+    "password": "ivanPass",
+    "role": "user",
+    "isVerified": false,
+    "avatar": "https://i.pravatar.cc/150?img=12",
+    "profile": {
+      "school": "",
+      "location": "",
+      "birthdate": "",
+      "hobbies": "",
+      "lifeGoals": "",
+      "timeSpentOn": "",
+      "profession": "",
+      "languages": [],
+      "favSong": "",
+      "funFact": "",
+      "bioTitle": "",
+      "pets": "",
+      "about": ""
+    }
+  },
+  {
+    "id": 4,
+    "username": "sofia11",
+    "email": "sofia@example.com",
+    "password": "123456",
+    "role": "user",
+    "isVerified": false,
+    "avatar": "https://i.pravatar.cc/150?img=33",
+    "profile": {
+      "school": "Plovdiv University",
+      "location": "Plovdiv, Bulgaria",
+      "birthdate": "2001-03-22",
+      "hobbies": "Painting",
+      "lifeGoals": "",
+      "timeSpentOn": "",
+      "profession": "Student",
+      "languages": ["Bulgarian"],
+      "favSong": "",
+      "funFact": "Loves frogs",
+      "bioTitle": "",
+      "pets": "",
+      "about": ""
+    }
+  }
+]

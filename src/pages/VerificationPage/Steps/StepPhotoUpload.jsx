@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setSelfieImage, setDocumentImage, nextStep } from "../../../store/slices/verificationSlice";
+import { setSelfieImage, setDocumentImage, nextStep,prevStep } from "../../../store/slices/verificationSlice";
 import { useState } from "react";
 import styles from "./StepPhotoUpload.module.css";
 
@@ -9,12 +9,14 @@ const StepPhotoUpload = () => {
   const [document, setDocument] = useState(null);
 
   const handleSubmit = () => {
-    if (selfie && document) {
-      dispatch(setSelfieImage(selfie));
-      dispatch(setDocumentImage(document));
-      dispatch(nextStep());
-    }
-  };
+  const fakeSelfie = selfie || new File(["selfie"], "selfie.jpg", { type: "image/jpeg" });
+  const fakeDoc = document || new File(["doc"], "doc.jpg", { type: "image/jpeg" });
+
+  dispatch(setSelfieImage(fakeSelfie));
+  dispatch(setDocumentImage(fakeDoc));
+  dispatch(nextStep());
+};
+
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +41,7 @@ const StepPhotoUpload = () => {
     <div className={styles.divider}></div>
 
       <div className={styles.buttons}>
-        <button className={styles.backBtn}>&lt; Назад</button>
+<button className={styles.backBtn} onClick={() => dispatch(prevStep())}>&lt; Назад</button>
         <button className={styles.primaryBtn} onClick={handleSubmit}>Продовжити</button>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setDocumentType, nextStep } from "../../../store/slices/verificationSlice";
+import { setDocumentType, nextStep, prevStep  } from "../../../store/slices/verificationSlice";
 import styles from "./StepPassport.module.css";
 
 const StepPassport = () => {
@@ -73,7 +73,7 @@ const StepPassport = () => {
     <div className={styles.divider}></div>
 
     <div className={styles.buttons}>
-      <button className={styles.backBtn}>&lt; Назад</button>
+<button className={styles.backBtn} onClick={() => dispatch(prevStep())}>&lt; Назад</button>
       <button className={styles.primaryBtn} onClick={handleContinue}>Продовжити</button>
     </div>
   </div>

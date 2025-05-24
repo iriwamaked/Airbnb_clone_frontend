@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
+import "./GoogleMap.css";
 
 const GoogleMap = ({ lat=46.4825, lng=30.7233}) => {
     const mapRef = useRef(null);
@@ -22,11 +23,16 @@ const GoogleMap = ({ lat=46.4825, lng=30.7233}) => {
                 },
             });
 
+             // Создаем InfoWindow
+      const infoWindow = new google.maps.InfoWindow({
+        content: "Точне місцерозположення буде повідомлено після бронювання.",
+      });
+
             // Маркер
             let startMarker = new google.maps.Marker({
                 map,
                 position: { lat, lng },
-                title: "Центр Киева",
+                // title: "Центр Киева",
                 icon: {
                     url: "/testDataProperty/img/hfuGoogleMaps.png",
                     scaledSize: new google.maps.Size(55, 55),
@@ -39,6 +45,16 @@ const GoogleMap = ({ lat=46.4825, lng=30.7233}) => {
                     fontFamily: "Nunito Sans, sans-serif",
                 },
             });
+
+// Показать infoWindow при наведении
+      startMarker.addListener("mouseover", () => {
+        infoWindow.open(map, startMarker);
+      });
+
+      // Скрыть infoWindow при уходе мыши
+      startMarker.addListener("mouseout", () => {
+        infoWindow.close();
+      });
 
             // Транспортный слой
             const transitLayer = new google.maps.TransitLayer();
@@ -92,6 +108,7 @@ const GoogleMap = ({ lat=46.4825, lng=30.7233}) => {
     }, [apiKey]);
 
     return (
+        
         <div>
             <div
                 ref={mapRef}

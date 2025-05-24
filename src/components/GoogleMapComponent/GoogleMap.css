@@ -1,0 +1,11 @@
+.gm-ui-hover-effect {
+  display: none !important;
+}
+
+.gm-style-iw {
+  font-family: 'Nunito Sans', sans-serif !important;
+  font-size: 16px !important;
+  max-width: 300px !important;  /* например, ограничение по ширине */
+ overflow-wrap: break-word; 
+  padding-left: 30px !important;
+}

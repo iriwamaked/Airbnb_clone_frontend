@@ -7,6 +7,8 @@ import PropertyImagesComponent from './2-propertyImages/PropertyImagesComponent'
 import Widget from './4-propertyComponentWidget/Widget';
 import PropertyDescription from './3-propertyComponent/PropertyDescription';
 import PropertyRating from './6-propertyComponentRaiting/PropertyRaiting';
+import PropertyReview from './7-propertyComponentReview/PropertyReview';
+import PropertyLocation from './8-propertyComponentLocation/PropertyLocation';
 
 
 
@@ -28,9 +30,10 @@ const OnePropertyPage = ()=>{
             <hr className={`my-3 mb-5 ${styles.divider}`} />
             <PropertyRating/>
 
-            <hr className={`my-3 ${styles.divider}`} />
+            {/* <hr className={`my-3 ${styles.divider}`} /> */}
 
-
+            <PropertyReview/>
+            <PropertyLocation/>
         </div>
     )
 }

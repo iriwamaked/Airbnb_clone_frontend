@@ -10,6 +10,7 @@ import PropertyRating from './6-propertyComponentRaiting/PropertyRaiting';
 import PropertyReview from './7-propertyComponentReview/PropertyReview';
 import PropertyLocation from './8-propertyComponentLocation/PropertyLocation';
 import PropertyOwner from './9-propertyComponentOwner/PropertyOwner';
+import PropertyImportantInfo from './10-propertyComponentImportant/PropertyImportantInfo';
 
 
 
@@ -38,8 +39,8 @@ const OnePropertyPage = () => {
 
 
             <PropertyOwner />
-            <hr className={`my-3 mb-5 ${styles.divider}`} />
-
+            <hr className={`my-3 ${styles.divider}`} />
+            <PropertyImportantInfo/>
         </div>
     )
 }

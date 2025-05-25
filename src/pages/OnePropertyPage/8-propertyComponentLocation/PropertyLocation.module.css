@@ -5,3 +5,12 @@
 .fw-700{
     font-weight: 700;
 }
+
+.custom-link{
+    color: #211E1A;
+    font-weight: 700;
+}
+
+.custom-link:hover{
+    color: #6F6558
+}

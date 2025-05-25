@@ -1,5 +1,5 @@
 import styles from './OnePropertyPage.module.css';
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import FirstPropertyComponent from './1-propertyComponent/FirstPropertyComponent';
 import PropertyImagesComponent from './2-propertyImages/PropertyImagesComponent';
@@ -9,18 +9,19 @@ import PropertyDescription from './3-propertyComponent/PropertyDescription';
 import PropertyRating from './6-propertyComponentRaiting/PropertyRaiting';
 import PropertyReview from './7-propertyComponentReview/PropertyReview';
 import PropertyLocation from './8-propertyComponentLocation/PropertyLocation';
+import PropertyOwner from './9-propertyComponentOwner/PropertyOwner';
 
 
 
-const OnePropertyPage = ()=>{
-    return(
+const OnePropertyPage = () => {
+    return (
         <div className={styles.container}>
-            <FirstPropertyComponent/>
-            <PropertyImagesComponent/>
+            <FirstPropertyComponent />
+            <PropertyImagesComponent />
             <Container className="p-0 mt-5">
                 <Row className={styles.testFloatingBlock}>
-                    <Col md={6} lg={7}><PropertyDescription/></Col>
-                    <Col md={6} lg={5}><Widget/></Col>
+                    <Col md={6} lg={7}><PropertyDescription /></Col>
+                    <Col md={6} lg={5}><Widget /></Col>
                 </Row>
             </Container>
             {/* <div className={styles.testFloatingBlock}>
@@ -28,12 +29,17 @@ const OnePropertyPage = ()=>{
                 <Widget/>
             </div> */}
             <hr className={`my-3 mb-5 ${styles.divider}`} />
-            <PropertyRating/>
+            <PropertyRating />
 
             {/* <hr className={`my-3 ${styles.divider}`} /> */}
 
-            <PropertyReview/>
-            <PropertyLocation/>
+            <PropertyReview />
+            <PropertyLocation />
+
+
+            <PropertyOwner />
+            <hr className={`my-3 mb-5 ${styles.divider}`} />
+
         </div>
     )
 }

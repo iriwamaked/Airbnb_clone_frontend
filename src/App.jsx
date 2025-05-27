@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import SimpleFooter from "./components/SimpleFooter/SimpleFooter";
-import { logout } from "./store/slices/authSlice"; // <-- правильно
+import { logout } from "./store/slices/authSlice"; 
 import { useDispatch } from "react-redux";
 
 import Header from "./components/Header/Header";

@@ -1,0 +1,60 @@
+.ff-1{
+    font-family: "Inknut Antiqua", serif;
+}
+
+.ff-2{
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.fw-500{
+    font-weight: 500;
+}
+
+.dot-divider::before {
+  content: "•";           /* точка */
+  margin: 0 0px;         /* отступ слева и справа */
+  color: #48433D;        /* цвет точки */
+  display: inline-block;  /* чтобы margin работал */
+  font-size: 14px;        /* размер точки, можно подправить */
+  vertical-align: middle; /* выравнивание по вертикали */
+}
+
+.custom-row {
+  display: flex;
+  justify-content: space-between; /* Расположит левый и правый блок по краям */
+  align-items: center; /* Центрирует по вертикали */
+  flex-wrap: wrap; /* Если на маленьком экране — перенос строк */
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Inknut Antiqua", serif;
+}
+
+.rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating-bar progress {
+  width: 120px;
+  height: 3px;
+  appearance: none;
+}
+
+.rating-bar progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 3px;
+}
+
+.rating-bar progress::-webkit-progress-value {
+  background-color: #211E1A;
+  border-radius: 3px;
+}

@@ -21,6 +21,7 @@ import OnePropertyPage from "./pages/OnePropertyPage/OnePropertyPage";
 
 import styles from "./styles/App.module.css";
 import TestPage from "./pages/TestPage";
+import SinglePropertyPage from "./pages/SinglePropertyPage/SinglePropertyPage";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,6 +65,7 @@ const useSimpleFooter = ["/profile", "/verification", "/verification-start"].som
         <Route path="/verification-start" element={<VerificationEntryPage />} />
         <Route path="/oneproperty" element={<OnePropertyPage />} />
           <Route path="/test" element={<TestPage/>} />
+          <Route path="/singleproperty" element={<SinglePropertyPage/>} />
       </Routes>
     </main>
 

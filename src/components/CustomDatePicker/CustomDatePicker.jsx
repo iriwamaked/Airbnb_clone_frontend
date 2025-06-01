@@ -10,7 +10,7 @@ import './CustomDatePicker.css'; // пользовательские стили 
 
 import DatePicker, { registerLocale } from 'react-datepicker';
 import uk from 'date-fns/locale/uk';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 // Регистрация украинской локали
@@ -24,14 +24,23 @@ const CustomDatePicker = ({
   disabledPast = false, // Запрет на выбор прошедших дат
   minDate,
   maxDate,
+  wrapperRef,
   ...props              // Остальные свойства: className, id и т.д.
 }) => {
   const today = new Date();
   const defaultStart = minDate || today;
   const defaultMax = maxDate || new Date(today.getFullYear(), today.getMonth() + 6, today.getDate());
 
+  //При первом рендере internalStart и internalEnd берут значения из пропсов.
   const [internalStart, setInternalStart] = useState(startDate);
   const [internalEnd, setInternalEnd] = useState(endDate);
+// Если родитель меняет startDate/endDate,
+//  useEffect обновит внутренний стейт, и календарь отобразит новые даты.
+  useEffect(() => {
+  setInternalStart(startDate);
+  setInternalEnd(endDate);
+}, [startDate, endDate]);
+
   const [openToDate, setOpenToDate] = useState(startDate || defaultStart);
 //   const [errorText, setErrorText] = useState('');
 
@@ -50,8 +59,8 @@ const CustomDatePicker = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  //добавлен ref на обертку календаря
-  const pickerRef=useRef(null);
+  // //добавлен ref на обертку календаря
+  // const pickerRef=useRef(null);
 
 //   useEffect(() => {
 //     if (errorText) {
@@ -65,15 +74,15 @@ const CustomDatePicker = ({
     const handleClick = (e) => {
       if (
         //проверки, чтобы рекция была только на те части календаря, которые не являются датами
-        pickerRef.current &&
-        pickerRef.current.contains(e.target) &&
+        wrapperRef.current &&
+        wrapperRef.current.contains(e.target) &&
         !e.target.classList.contains('react-datepicker__day') &&
         !e.target.classList.contains('react-datepicker__day--selected') &&
         !e.target.classList.contains('react-datepicker__day--in-range') &&
         !e.target.classList.contains('react-datepicker__day-name') &&
         !e.target.classList.contains('react-datepicker__current-month') 
-        //если был клик ВНЕ календаря тоже очищаем даты
-        || !pickerRef.current?.contains(e.target)
+        // //если был клик ВНЕ календаря тоже очищаем даты
+        // || !pickerRef.current?.contains(e.target)
       ) {
         setInternalStart(null);
         setInternalEnd(null);
@@ -85,7 +94,7 @@ const CustomDatePicker = ({
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, [onChange]);
+  }, [onChange, wrapperRef]);
 
 
   // Проверка, содержит ли диапазон хотя бы одну занятую дату
@@ -180,7 +189,7 @@ const CustomDatePicker = ({
 
   return (
     //чтобы ref сработал, надо компонент обернуть в div и ему задать атрибут
-    <div ref={pickerRef}>
+    <div ref={wrapperRef}>
       <DatePicker
         locale="uk"
         selected={internalStart || null} 
@@ -219,6 +228,7 @@ CustomDatePicker.propTypes = {
   disabledPast: PropTypes.bool,
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
+  wrapperRef: PropTypes.object
 };
 export default CustomDatePicker;
 

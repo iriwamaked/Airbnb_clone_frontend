@@ -6,8 +6,10 @@ import { useState } from 'react';
 import CustomDatePicker from '../../../components/CustomDatePicker/CustomDatePicker';
 import { setDateRange, clearDateRange } from '../../../store/slices/dataRangeSlice';
 import { useMemo } from 'react';
+import GuestSelector from '../../../components/GuestsSelector/GuestSelector';
 
-const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates }) => {
+
+const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates, maxGuests, petsAllowed, maxPets }) => {
 
     const startDateRaw = useSelector(state => state.dateRange.startDate);
     const endDateRaw = useSelector(state => state.dateRange.endDate);
@@ -25,6 +27,10 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
         return Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
     }, [startDate, endDate]);
 
+    const nights = nightsCount === 0 ? ""
+        : nightsCount === 1 ? " ніч"
+            : (nightsCount >= 2 && nightsCount <= 4) ? " ночі"
+                : " ночей";
 
     const busyRanges = useMemo(() => {
         if (!Array.isArray(busyDates)) return [];
@@ -33,6 +39,14 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
             end: new Date(range.to)
         }));
     }, [busyDates]);
+
+    const totalPricePerNight = pricePerNight * nightsCount;
+
+    const totalAddedServicesPrice = useMemo(() => {
+        if (!Array.isArray(priceForAddedServices)) return 0;
+        return priceForAddedServices.reduce((sum, service) => sum + service.price, 0);
+    }, [priceForAddedServices]);
+
 
     const [showCalendar, setShowCalendar] = useState(false);
     const [activeField, setActiveField] = useState(null);
@@ -48,18 +62,31 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
         const [start, end] = dates;
         const serialized = [start ? start.toISOString() : null, end ? end.toISOString() : null];
         dispatch(setDateRange(serialized));
-    }
+        if (start && end) {
+            setTimeout(() => {
+                closeCalendar() // закрываем календарь, если обе даты выбраны
+            }, 1000)
+        }
+    };
 
     const clearDates = () => {
         // 
         dispatch(clearDateRange());
     }
 
+    const [showGuests, setShowGuests] = useState(false);
 
+
+    // console.log(maxPets);
     return (
         <div className={styles["widget-container"]}>
             <div className={styles["custom-row"]}>
-                <span><span className={styles["custom-weight"]}>$ {pricePerNight}</span> ніч</span>
+                <span className={styles["custom-weight"]}>
+                    $
+                    {nightsCount === 0
+                        ? `${pricePerNight} ніч`
+                        : `${totalPricePerNight}`}
+                </span>
                 <span className={styles["right-block"]}>
                     <span>
                         <i className="bi bi-star-fill me-2"></i>
@@ -81,15 +108,28 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                         <div className={styles.date}>{formattedStart}</div>
                     </Col>
                     <Col className={styles["col"]}
-                        onClick={() => openCalendar('end')}
-                    >
+                        onClick={() => openCalendar('end')}  >
                         <div>ВИЇЗД</div>
                         <div className={styles.date}>{formattedEnd}</div>
                     </Col>
                 </Row>
                 <Row>
                     <div className={styles.row}>ГОСТІ</div>
-                    <div style={{ fontWeight: 400, padding: "0px 15px 15px 15px" }}>1 гість</div>
+                    <div style={{
+                        fontWeight: 400,
+                        padding: "0px 15px 15px 15px",
+                        cursor: "pointer",
+                        position: "relative"
+                    }}
+                        
+                        onClick={(e) =>  {e.stopPropagation(); setShowGuests(true); console.log("Widget Onclick works")}}>
+                        1 гість
+                        {showGuests && (
+                            <GuestSelector maxGuests={maxGuests} petsAllowed={petsAllowed} maxPets={maxPets} 
+                                          onClose={() => {setShowGuests(false); console.log("onClose Winget works")}} />
+                        )}
+
+                    </div>
                 </Row>
             </Container>
 
@@ -98,61 +138,78 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
             </button>
 
             <p className={`${styles["text"]} ${styles["text-first"]}`}>Поки що ви нічого не платите</p>
-            <p className={`${styles["text"]} ${styles["text-second"]}`}>
-                <span className={styles["underline-text-2"]}>$63 x 5 ночей</span>
-                <span>$ 315</span>
-            </p>
-            <p className={`${styles["text"]} ${styles["text-second"]}`}>
-                <span className={styles["underline-text-2"]}>Плата за прибирання</span>
-                <span>$20</span>
-            </p>
-            <hr className={styles.divider} />
-            <p className={`${styles["text"]} ${styles["text-second"]} ${styles["weight-700"]}`}>
-                <span>Усього до сплати податків</span>
-                <span>$335</span>
-            </p>
+            {nightsCount > 0 ? (<>
+                <p className={`${styles["text"]} ${styles["text-second"]}`}>
 
+                    <span className={styles["underline-text-2"]}>${pricePerNight} x {nightsCount} {nights}</span>
+                    <span>$ {pricePerNight * nightsCount}</span>
+                </p>
+                {Array.isArray(priceForAddedServices) && priceForAddedServices.length > 0 && priceForAddedServices.map((service, index) => (
+                    <p key={index} className={`${styles["text"]} ${styles["text-second"]}`}>
+                        <span className={styles["underline-text-2"]}>{service.name}</span>
+                        <span>$ {service.price}</span>
+                    </p>
+                ))}
+                <hr className={styles.divider} />
+                <p className={`${styles["text"]} ${styles["text-second"]} ${styles["weight-700"]}`}>
+                    <span>Усього до сплати податків</span>
+                    <span>$ {totalPricePerNight + totalAddedServicesPrice}</span>
+                </p>
+            </>) : (<span>Оберіть дати для розрахунку вартості</span>)}
             {/*Календарь справа зверху*/}
             {showCalendar && (
                 <div
-                    className={styles["calendar-popup"]}
-
-                >
+                    className={styles["calendar-popup"]}>
                     <Row className='m-2'>
                         <Col className={styles["row-popupp-ff"]}>
                             <h4 className="m-0 p-0 mb-2">
-                                {nightsCount === 0 ? "" : `${nightsCount} `}
-                                {nightsCount === 0 ? "" : nightsCount === 1 ? "ніч" : nightsCount >= 2 && nightsCount <= 4 ? "ночі" : "ночей"}
+                                {nightsCount === 0 ? "Виберіть дати" : `${nightsCount} `}
+                                {nights}
                             </h4>
 
-                 <Row className={`g-0 ${styles["row-popup-ff"]}`}>
+                            <Row className={`g-0 ${styles["row-popup-ff"]}`}>
 
-                             <Col>
-                                {startDate ? startDate.toLocaleDateString("uk-UA",
-                                    {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric'
-                                    }) : ""}
+                                {startDate ?
+                                    (<><Col>
+                                        {startDate ? startDate.toLocaleDateString("uk-UA",
+                                            {
+                                                day: 'numeric',
+                                                month: 'long',
+                                                year: 'numeric'
+                                            }) : ""}
 
-                           </Col>
-                            <Col>
-                                {endDate ? endDate.toLocaleDateString("uk-UA",
-                                    {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric'
-                                    }) : ""}
-                           </Col>
-                           </Row>
+                                    </Col>
+                                        <Col>
+                                            {endDate ? endDate.toLocaleDateString("uk-UA",
+                                                {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric'
+                                                }) : ""}
+                                        </Col></>) : ("Щоб переглянути точну ціну, вкажіть дати подорожі")}
+                            </Row>
                         </Col>
                         <Col>
                             <Row>
-                                <Col className={`${styles["col-border-full-left"]} ${styles["col2"]}`} >
+                                <Col
+                                    className={`${styles["col-border-full-left"]} ${styles["col2"]} ${!startDate
+                                        ? styles["highlight-block"]
+                                        : endDate
+                                            ? ""
+                                            : "border-end-0"
+                                        }`}
+                                >
                                     <label>Прибуття</label>
                                     <div className={styles.date}>{formattedStart}</div>
                                 </Col>
-                                <Col className={`${styles["col-border-full-right"]} ${styles["col2"]}`} >
+                                <Col
+                                    className={`${styles["col-border-full-right"]} ${styles["col2"]} ${startDate && !endDate
+                                        ? styles["highlight-block"]
+                                        : startDate && endDate
+                                            ? ""
+                                            : "border-start-1"
+                                        }`}
+                                >
                                     <label>Виїзд</label>
                                     <div className={styles.date}>{formattedEnd}</div>
                                 </Col>
@@ -197,7 +254,7 @@ Widget.propTypes = {
             forcibly: PropTypes.bool.isRequired,
             price: PropTypes.number.isRequired
         })
-    ).isRequired,
+    ),
     busyDates: PropTypes.arrayOf(
         PropTypes.shape(
             {
@@ -205,7 +262,10 @@ Widget.propTypes = {
                 to: PropTypes.string.isRequired
             }
         )
-    )
+    ),
+    maxGuests: PropTypes.number.isRequired,
+    petsAllowed: PropTypes.bool,
+    maxPets: PropTypes.number
 };
 
 export default Widget;

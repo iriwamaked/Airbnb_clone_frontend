@@ -53,6 +53,8 @@
             "bedroomsNumber": 1,
             "bedNumber": 1,
             "bathroomsNumber": 1,
+            "petsAllowed": true,
+            "maxPetsNumber": 2,
             "advantages": [
                 {
                     "title": "Окреме робоче місце",

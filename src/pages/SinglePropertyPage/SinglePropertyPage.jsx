@@ -58,6 +58,7 @@ const SinglePropertyPage = () => {
     }
     if (!property) return <div className="d-flex justify-content-center align-items-center" >Помилка завантаження данних</div>
 
+        // console.log(property.maxPetsNumber);
     return (
         <div className={styles.container}>
             <FirstPropertyComponent
@@ -94,7 +95,10 @@ const SinglePropertyPage = () => {
                              reviewsNumber={property.reviewsNumber} 
                              busyDates={property.booked_dates}
                             pricePerNight={property.pricePerNight} 
-                            priceForAddedServices={property.priceForAddedServices} />
+                            priceForAddServices={property.priceForAddServices} 
+                            maxGuests={property.maxGuestsNumber}
+                            petsAllowed={property.petsAllowed}
+                            maxPets={property.maxPetsNumber}/>
                     </Col>
                 </Row>
             </Container>

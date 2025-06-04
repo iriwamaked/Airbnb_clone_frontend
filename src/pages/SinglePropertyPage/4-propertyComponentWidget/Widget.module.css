@@ -13,6 +13,7 @@
     font-size: 14px;
     font-weight: 400;
     margin-left: 100px;
+    min-width: 320px;
 }
 
 .custom-row {
@@ -50,7 +51,7 @@
 
 .custom-weight{
     font-weight: 600;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .dot-divider::before {
@@ -170,17 +171,23 @@
   cursor: pointer;
 }
 
-.col-border-full-left:active{
-   border: 2px solid #211E1A;
-  border-radius: 15px;
-}
-
 .col-border-full-right{
   border: 1px solid #211E1A;
   border-radius: 0 15px 15px 0;
   border-left:0;
   cursor: pointer;
 }
+
+.highlight-block{
+   border: 2px solid #211E1A;
+  border-radius: 15px;
+}
+
+.highlight-block-left{
+   border: 2px solid #211E1A;
+  border-radius: 15px;
+}
+
 
 .underline{
     text-decoration: underline;

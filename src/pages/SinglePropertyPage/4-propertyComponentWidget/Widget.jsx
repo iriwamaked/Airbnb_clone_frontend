@@ -9,7 +9,7 @@ import { useMemo } from 'react';
 import GuestSelector from '../../../components/GuestsSelector/GuestSelector';
 
 
-const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates, maxGuests, petsAllowed, maxPets }) => {
+const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates, maxGuests, petsAllowed, maxPets, petsAddedPrice }) => {
 
     const startDateRaw = useSelector(state => state.dateRange.startDate);
     const endDateRaw = useSelector(state => state.dateRange.endDate);
@@ -40,12 +40,13 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
         }));
     }, [busyDates]);
 
-    const totalPricePerNight = pricePerNight * nightsCount;
+
 
     const totalAddedServicesPrice = useMemo(() => {
         if (!Array.isArray(priceForAddedServices)) return 0;
         return priceForAddedServices.reduce((sum, service) => sum + service.price, 0);
     }, [priceForAddedServices]);
+
 
 
     const [showCalendar, setShowCalendar] = useState(false);
@@ -76,7 +77,23 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
 
     const [showGuests, setShowGuests] = useState(false);
 
+    const guests = useSelector(state => state.guests);
+    const { adults = 0, children = 0, infants = 0, pets = 0 } = guests || {};
+    const totalGuests = adults + children;
+    let guestLabel = totalGuests === 0 ? "Додати гостей" : `${totalGuests} ${totalGuests === 1 ? "гість" : "гостей"}`
 
+    if (infants > 0) {
+        guestLabel += `, ${infants} ${infants === 1 ? "немовля" : "немовлят"}`;
+    }
+
+    // Додаємо тварин, якщо є
+    if (pets > 0) {
+        guestLabel += `, ${pets} ${pets === 1 ? "тварина" : "тварини"}`;
+    }
+
+    const totalPetsAddedPrice = pets * petsAddedPrice;
+
+    const totalPricePerNight = (pricePerNight * nightsCount) + totalAddedServicesPrice + totalPetsAddedPrice;
     // console.log(maxPets);
     return (
         <div className={styles["widget-container"]}>
@@ -121,18 +138,18 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                         cursor: "pointer",
                         position: "relative"
                     }}
-                        
-                        onClick={(e) =>  {e.stopPropagation(); setShowGuests(true); console.log("Widget Onclick works")}}>
-                        1 гість
+
+                        onClick={(e) => { e.stopPropagation(); setShowGuests(true); console.log("Widget Onclick works") }}>
+                        {guestLabel}
                         {showGuests && (
-                            <GuestSelector maxGuests={maxGuests} petsAllowed={petsAllowed} maxPets={maxPets} 
-                                          onClose={() => {setShowGuests(false); console.log("onClose Winget works")}} />
+                            <GuestSelector maxGuests={maxGuests} petsAllowed={petsAllowed} maxPets={maxPets}
+                                onClose={() => { setShowGuests(false); console.log("onClose Winget works") }} />
                         )}
 
                     </div>
                 </Row>
             </Container>
-
+           
             <button className={styles.button}>
                 Забронювати
             </button>
@@ -144,16 +161,23 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                     <span className={styles["underline-text-2"]}>${pricePerNight} x {nightsCount} {nights}</span>
                     <span>$ {pricePerNight * nightsCount}</span>
                 </p>
+                {console.log({ priceForAddedServices })}
                 {Array.isArray(priceForAddedServices) && priceForAddedServices.length > 0 && priceForAddedServices.map((service, index) => (
                     <p key={index} className={`${styles["text"]} ${styles["text-second"]}`}>
                         <span className={styles["underline-text-2"]}>{service.name}</span>
                         <span>$ {service.price}</span>
                     </p>
                 ))}
+                {petsAllowed && pets > 0 && (
+                    <p className={`${styles["text"]} ${styles["text-second"]}`}>
+                        <span className={styles["underline-text-2"]}> Плата за розміщення  тварин <small>{pets} х {petsAddedPrice}</small></span> <span>$ {totalPetsAddedPrice}</span>
+                    </p>
+                )}
+
                 <hr className={styles.divider} />
                 <p className={`${styles["text"]} ${styles["text-second"]} ${styles["weight-700"]}`}>
-                    <span>Усього до сплати податків</span>
-                    <span>$ {totalPricePerNight + totalAddedServicesPrice}</span>
+                    <span>Усього до сплати: </span>
+                    <span>$ {totalPricePerNight}</span>
                 </p>
             </>) : (<span>Оберіть дати для розрахунку вартості</span>)}
             {/*Календарь справа зверху*/}
@@ -265,7 +289,8 @@ Widget.propTypes = {
     ),
     maxGuests: PropTypes.number.isRequired,
     petsAllowed: PropTypes.bool,
-    maxPets: PropTypes.number
+    maxPets: PropTypes.number,
+    petsAddedPrice: PropTypes.number
 };
 
 export default Widget;

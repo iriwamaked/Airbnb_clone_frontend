@@ -95,10 +95,11 @@ const SinglePropertyPage = () => {
                              reviewsNumber={property.reviewsNumber} 
                              busyDates={property.booked_dates}
                             pricePerNight={property.pricePerNight} 
-                            priceForAddServices={property.priceForAddServices} 
+                            priceForAddedServices={property.priceForAddServices} 
                             maxGuests={property.maxGuestsNumber}
                             petsAllowed={property.petsAllowed}
-                            maxPets={property.maxPetsNumber}/>
+                            maxPets={property.maxPetsNumber}
+                            petsAddedPrice={property.petsAddedPrice}/>
                     </Col>
                 </Row>
             </Container>

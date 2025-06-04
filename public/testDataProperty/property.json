@@ -55,6 +55,7 @@
             "bathroomsNumber": 1,
             "petsAllowed": true,
             "maxPetsNumber": 2,
+            "petsAddedPrice": 20,
             "advantages": [
                 {
                     "title": "Окреме робоче місце",

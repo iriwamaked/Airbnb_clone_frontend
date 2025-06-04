@@ -79,19 +79,19 @@ const GuestSelector = ({ maxGuests, onClose, petsAllowed = false, maxPets }) => 
             onClick={(e) => e.stopPropagation()}>
             <div>
                 <div><b>Дорослі</b> <small className='ms-2'>(від 13 р.)</small></div>
-                <button onClick={() => handleChange("adults", adults-1)}>-</button>
+                <button onClick={() => handleChange("adults", adults-1)} disabled={adults===0}>-</button>
                 <span>{adults}</span>
                 <button onClick={() => { handleChange("adults", adults + 1); console.log({ maxGuests }) }} disabled={totalGuests >= maxGuests}>+</button>
             </div>
             <div>
                 <div><b>Діти</b> <small className='ms-2'>(від 2 до 12 р.) </small></div>
-                <button onClick={() => handleChange("children", children - 1)}>-</button>
+                <button onClick={() => handleChange("children", children - 1)} disabled={children===0}>-</button>
                 <span>{children}</span>
                 <button onClick={() => handleChange("children", children + 1)} disabled={totalGuests >= maxGuests}>+</button>
             </div>
             <div>
                 <div><b>Немовлята</b> <small className='ms-2'>(до 2 р.)</small></div>
-                <button onClick={() => handleChange("infants", infants - 1)}>-</button>
+                <button onClick={() => handleChange("infants", infants - 1)} disabled={infants===0}>-</button>
                 <span>{infants}</span>
                 <button onClick={() => handleChange("infants", infants+1)} disabled={infants >= 5}>+</button>
             </div>
@@ -100,10 +100,10 @@ const GuestSelector = ({ maxGuests, onClose, petsAllowed = false, maxPets }) => 
 
                 <button onClick={() => handleChange("pets", pets-1)} disabled={!petsAllowed || pets === 0}>-</button>
                 <span>{pets}</span>
-                <button onClick={() => handleChange("pets", pets+1)} disabled={!petsAllowed}>+</button>
+                <button onClick={() => handleChange("pets", pets+1)} disabled={!petsAllowed||pets>=maxPets}>+</button>
             </div>
             <p className={`mt-2 ${styles.infoText}`}>
-                У цьому помешканні може перебувати <b> {maxGuests} {guestsString}</b>, не враховуючи немовлят.</p>
+                У цьому помешканні може перебувати <b> {maxGuests} {guestsString}</b>, не враховуючи немовлят.</p>      
             <p className={styles.infoText}>Перебування з домашніми тваринами <b>{petsAllowed ? `дозволено в кількості до ${maxPets} ${petsString}.` : "не дозволено"}</b>
             </p>
 

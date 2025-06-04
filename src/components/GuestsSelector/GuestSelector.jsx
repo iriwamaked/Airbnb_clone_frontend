@@ -59,7 +59,6 @@ const GuestSelector = ({ maxGuests, onClose, petsAllowed = false, maxPets }) => 
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                console.log("Клик вне компонента");
                 onClose();
             }
         };

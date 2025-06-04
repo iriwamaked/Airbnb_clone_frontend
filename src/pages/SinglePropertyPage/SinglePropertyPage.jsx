@@ -14,11 +14,25 @@ import PropertyImportantInfo from './10-propertyComponentImportant/PropertyImpor
 import { useEffect, useState } from 'react';
 
 import { Spinner } from 'react-bootstrap';
+import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 
 
 const SinglePropertyPage = () => {
     const [property, setProperty] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const [showModal, setShowModal] = useState(false);
+    const [modalContent, setModalContent] = useState({
+        title: 'Приносимо вибачення',
+        message: 'Компонент в стадії розробки',
+    });
+
+    const openModal = () => {
+        // setModalContent({ title, message });
+        setShowModal(true);
+    };
+
+    const closeModal = () => setShowModal(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,14 +70,14 @@ const SinglePropertyPage = () => {
             </div>
         );
     }
-    if (!property) return <div className="d-flex justify-content-center align-items-center" >Помилка завантаження данних</div>
+    if (!property) return <div className="d-flex justify-content-center align-items-center">Помилка завантаження данних</div>
 
-        // console.log(property.maxPetsNumber);
+
+
     return (
         <div className={styles.container}>
             <FirstPropertyComponent
                 title={property.title}
-
                 rating={property.rating}
                 reviewsNumber={property.reviewsNumber}
                 location={`${property.city}, ${property.region}, ${property.country}`}
@@ -75,9 +89,9 @@ const SinglePropertyPage = () => {
                     <Col md={6} lg={7}>
                         <PropertyDescription
                             shortDescription={property.shortDescription}
-                            owner={property.owner}
-                            ownerAvatar={property.ownerAvatar}
-                            maxGuestsNumber={property.maxGuestsNumber}
+                            owner={property.owner.name}
+                            ownerAvatar={property.owner.avatar}
+                            maxGuestsNumber={property.guestsRules.maxGuestsNumber}
                             bedroomsNumber={property.bedroomsNumber}
                             bedNumber={property.bedNumber}
                             bathroomsNumber={property.bathroomsNumber}
@@ -92,14 +106,15 @@ const SinglePropertyPage = () => {
                         /></Col>
                     <Col md={6} lg={5}>
                         <Widget rating={property.rating}
-                             reviewsNumber={property.reviewsNumber} 
-                             busyDates={property.booked_dates}
-                            pricePerNight={property.pricePerNight} 
-                            priceForAddedServices={property.priceForAddServices} 
-                            maxGuests={property.maxGuestsNumber}
-                            petsAllowed={property.petsAllowed}
-                            maxPets={property.maxPetsNumber}
-                            petsAddedPrice={property.petsAddedPrice}/>
+                            reviewsNumber={property.reviewsNumber}
+                            busyDates={property.booked_dates}
+                            pricePerNight={property.pricePerNight}
+                            priceForAddedServices={property.priceForAddServices}
+                            maxGuests={property.guestsRules.maxGuestsNumber}
+                            petsAllowed={property.guestsRules.petsAllowed}
+                            maxPets={property.guestsRules.maxPetsNumber}
+                            petsAddedPrice={property.guestsRules.petsAddedPrice} 
+                            openModal={openModal}/>
                     </Col>
                 </Row>
             </Container>
@@ -108,20 +123,36 @@ const SinglePropertyPage = () => {
                 <Widget/>
             </div> */}
             <hr className={`my-3 mb-5 ${styles.divider}`} />
-            <PropertyRating 
-                 rating={property.rating}
-                 reviewsNumber={property.reviewsNumber}
-                 ratingCriterias={property.ratingCriterias}
-                />
+            <PropertyRating
+                rating={property.rating}
+                reviewsNumber={property.reviewsNumber}
+                ratingCriterias={property.ratingCriterias}
+            />
 
             {/* <hr className={`my-3 ${styles.divider}`} /> */}
 
-            <PropertyReview />
-            <PropertyLocation />
+            <PropertyReview comments={property.comments} openModal={openModal} />
 
-            <PropertyOwner />
+            <PropertyLocation coords={property.locationCoords}
+                location={`${property.city}, ${property.region}, ${property.country}`}
+                locationDescription={property.locationDescription}
+                openModal={openModal}
+            />
+
+            <PropertyOwner owner={property.owner} openModal={openModal} />
+
             <hr className={`my-3 ${styles.divider}`} />
-            <PropertyImportantInfo />
+
+            <PropertyImportantInfo importantInfo={property.importantInfo}
+                maxGuests={property.maxGuestsNumber}
+                openModal={openModal} />
+
+            <TemporaryModal
+                show={showModal}
+                onClose={closeModal}
+                title={modalContent.title}
+                message={modalContent.message}
+            />
         </div>
     )
 }

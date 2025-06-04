@@ -9,7 +9,7 @@ import { useMemo } from 'react';
 import GuestSelector from '../../../components/GuestsSelector/GuestSelector';
 
 
-const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates, maxGuests, petsAllowed, maxPets, petsAddedPrice }) => {
+const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates, maxGuests, petsAllowed, maxPets, petsAddedPrice, openModal}) => {
 
     const startDateRaw = useSelector(state => state.dateRange.startDate);
     const endDateRaw = useSelector(state => state.dateRange.endDate);
@@ -130,7 +130,7 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                         <div className={styles.date}>{formattedEnd}</div>
                     </Col>
                 </Row>
-                <Row>
+                <Row onClick={(e) => { e.stopPropagation(); setShowGuests(true); }}>
                     <div className={styles.row}>ГОСТІ</div>
                     <div style={{
                         fontWeight: 400,
@@ -139,18 +139,18 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                         position: "relative"
                     }}
 
-                        onClick={(e) => { e.stopPropagation(); setShowGuests(true); console.log("Widget Onclick works") }}>
+                        >
                         {guestLabel}
                         {showGuests && (
                             <GuestSelector maxGuests={maxGuests} petsAllowed={petsAllowed} maxPets={maxPets}
-                                onClose={() => { setShowGuests(false); console.log("onClose Winget works") }} />
+                                onClose={() => { setShowGuests(false); }} />
                         )}
 
                     </div>
                 </Row>
             </Container>
            
-            <button className={styles.button}>
+            <button className={styles.button} onClick={openModal}>
                 Забронювати
             </button>
 
@@ -161,7 +161,7 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                     <span className={styles["underline-text-2"]}>${pricePerNight} x {nightsCount} {nights}</span>
                     <span>$ {pricePerNight * nightsCount}</span>
                 </p>
-                {console.log({ priceForAddedServices })}
+                {/* {console.log({ priceForAddedServices })} */}
                 {Array.isArray(priceForAddedServices) && priceForAddedServices.length > 0 && priceForAddedServices.map((service, index) => (
                     <p key={index} className={`${styles["text"]} ${styles["text-second"]}`}>
                         <span className={styles["underline-text-2"]}>{service.name}</span>
@@ -290,7 +290,8 @@ Widget.propTypes = {
     maxGuests: PropTypes.number.isRequired,
     petsAllowed: PropTypes.bool,
     maxPets: PropTypes.number,
-    petsAddedPrice: PropTypes.number
+    petsAddedPrice: PropTypes.number,
+    openModal: PropTypes.func.isRequired
 };
 
 export default Widget;

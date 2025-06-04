@@ -16,11 +16,9 @@
             "city": "Одеса",
             "region": "Одеська область",
             "country": "Україна",
-            "pricePerNight": 180,
-            "priceForAddServices": [
-                {"name": "Плата за прибирання", "forcibly": true, "price": 20},
-                {"name": "Додатковий комплект рушників", "forcibly": false, "price": 10}
-            ],
+            "shortDescription": "Помешкання для оренди",
+            "description": "Вона оснащена кондиціонером і безкоштовним Wi-Fi. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Квартира розміром 24 метри з повністю обладнаною кухнею з мікроволновою піччю, вітальнею, телевізором з плоским екраном, власною ванною кімнатою з правльною машиною, феном. Є Холодильник, плита, чайник. Спальне місце - двоспальне ліжко. На території комплексу розташовані магазин, аптека, кавярня та інші сервіси, поруч...",
+            "locationDescription": "Перша лінія від моря, Аркадія, Французький бульвар",
             "images": [
                 {
                     "src": "https://a0.muscache.com/im/pictures/0a159d56-b424-4a61-a319-4f968e356974.jpg?im_w=1200",
@@ -43,19 +41,28 @@
                     "alt": "Ванна кімната"
                 }
             ],
-            "shortDescription": "Помешкання для оренди",
-            "owner": "Ілона",
-            "ownerAvatar": {
-                "src": "./testDataProperty/img/Owner.png",
-                "alt": "Ваш господар - Ілона"
+            "guestsRules": {
+                "maxGuestsNumber": 4,
+                "petsAllowed": true,
+                "maxPetsNumber": 2,
+                "petsAddedPrice": 0
             },
-            "maxGuestsNumber": 4,
+            "pricePerNight": 180,
+            "priceForAddServices": [
+                {
+                    "name": "Плата за прибирання",
+                    "forcibly": true,
+                    "price": 20
+                },
+                {
+                    "name": "Додатковий комплект рушників",
+                    "forcibly": false,
+                    "price": 10
+                }
+            ],
             "bedroomsNumber": 1,
             "bedNumber": 1,
             "bathroomsNumber": 1,
-            "petsAllowed": true,
-            "maxPetsNumber": 2,
-            "petsAddedPrice": 20,
             "advantages": [
                 {
                     "title": "Окреме робоче місце",
@@ -70,7 +77,6 @@
                     "description": ""
                 }
             ],
-            "description": "Вона оснащена кондиціонером і безкоштовним Wi-Fi. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Квартира розміром 24 метри з повністю обладнаною кухнею з мікроволновою піччю, вітальнею, телевізором з плоским екраном, власною ванною кімнатою з правльною машиною, феном. Є Холодильник, плита, чайник. Спальне місце - двоспальне ліжко. На території комплексу розташовані магазин, аптека, кавярня та інші сервіси, поруч...",
             "placeForSleep": [
                 {
                     "src": "https://a0.muscache.com/im/pictures/e716e3eb-a07f-4b94-ae48-569fb8e581ba.jpg?im_w=720",
@@ -241,12 +247,79 @@
                     "commentText": "Все було чудово! Дар'я завжди готова допомогти! Вид з вікна окреми вид задоволення."
                 },
                 {
-                    "userAvatar": "/t/testDataProperty/img/reviews/sveta.png",
+                    "userAvatar": "/testDataProperty/img/reviews/sveta.png",
                     "alt": "Sveta",
                     "userName": "Sveta",
                     "commentText": "Дуже гарна квартира і дуже гарна господиня. Прекрасний вид на найкраще в світі море!!!  Це відпочинок для душі!!! Даша, дуже дуже вам дякую за все."
                 }
-            ]
+            ],
+            "_commentLocation": "местонахождение: ЛОКАЦИЯ ГуглМапс:",
+            "locationCoords": {
+                "latitude": 46.45895,
+                "longitude": 30.763547
+            },
+            "_commentOwner": "Данные о хозяине",
+            "owner": {
+                "name": "Ілона",
+                "avatar": {
+                    "src": "./testDataProperty/img/Owner.png",
+                    "alt": "Ваш господар - Ілона"
+                },
+                "registrationDate": "2025-06-01",
+                "reviewsNumber": 35,
+                "isVerificated": true,
+                "languages": [
+                    "English",
+                    "Українська"
+                ],
+                "responseSpeed": 100,
+                "responseSpeedDuration": "протягом декількох годин"
+            },
+            "importantInfo": {
+                "homeRules": [
+                    {
+                        "type": "arrival",
+                        "text": "Прибуття: після 13:00"
+                    },
+                    {
+                        "type": "departure",
+                        "text": "Виїзд: до 10:00"
+                    },
+                    {
+                        "type": "pets",
+                        "text": "З тваринами заборонено"
+                    },
+                    {
+                        "type": "parties",
+                        "text": "Без вечірок та заходів"
+                    }
+                ],
+                "safetyRules": [
+                    {
+                        "type": "smokeDetector",
+                        "label": "Датчик диму"
+                    },
+                    {
+                        "type": "carbonMonoxideDetector",
+                        "label": "Датчик чадного газу"
+                    },
+                    {
+                        "type": "firstAid",
+                        "label": "Аптечка"
+                    },
+                    {
+                        "type": "fireExtinguisher",
+                        "label": "Вогнегасник"
+                    }
+                ],
+                "cancelPolicy": [
+                    {
+                        "freeCancelationDays": 14,
+                        "partCancelationDays": 4,
+                        "partCancelationPercent": 50
+                    }
+                ]
+            }
         }
     }
 }

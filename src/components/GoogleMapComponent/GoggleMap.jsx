@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import "./GoogleMap.css";
+import PropTypes from "prop-types";
 
 const GoogleMap = ({ lat=46.4825, lng=30.7233}) => {
     const mapRef = useRef(null);
@@ -117,5 +118,11 @@ const GoogleMap = ({ lat=46.4825, lng=30.7233}) => {
         </div>
     );
 };
+
+
+GoogleMap.propTypes={
+    lat: PropTypes.number,
+    lng: PropTypes.number
+}
 
 export default GoogleMap;

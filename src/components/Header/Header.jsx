@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import PropTypes from "prop-types";
-import SearchBar from "../SearchBar/SearchBar";
+// import SearchBar from "../SearchBar/SearchBar";
+import SearchPanel from "../SearchPanel/SearchPanel";
 
 const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated }) => {
   const location = useLocation();
@@ -76,9 +77,9 @@ const withUnderline = location.pathname.startsWith("/verification");
         </div>
       </div>
       <div className={styles.searchContainer} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
-        <SearchBar onFocus={handleFocus} onBlur={handleBlur} onSearch={handleSearch}/>
+        <SearchPanel/>
       </div>
-
+      
     </header>
   );
 };

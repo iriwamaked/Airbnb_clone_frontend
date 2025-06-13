@@ -9,11 +9,21 @@
   background-color: var(--color-light-bg);
   height: 15px;
   padding-top: 20px;
- 
-  width: 1135px;
+ width: 100%;
+  max-width: 1135px;
+  margin: 20px auto;
+  margin-bottom: 40px;
+}
+
+.footer .left,
+.footer .right {
   max-width: 1135px;
   margin: 0 auto;
-  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+ 
 }
 
 .left, .right {

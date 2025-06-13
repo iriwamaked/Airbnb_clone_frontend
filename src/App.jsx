@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import SimpleFooter from "./components/SimpleFooter/SimpleFooter";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -34,9 +33,9 @@ const location = useLocation();
 const pathname = location.pathname;
   console.log("🔒 Пользователь в Redux:", user);
 
-const useSimpleFooter = ["/profile", "/verification", "/verification-start"].some(path =>
-  pathname.startsWith(path)
-);
+// const useSimpleFooter = ["/profile", "/verification", "/verification-start"].some(path =>
+//   pathname.startsWith(path)
+// );
 
   const handleLogout = () => {
     logout();
@@ -69,7 +68,7 @@ const useSimpleFooter = ["/profile", "/verification", "/verification-start"].som
       </Routes>
     </main>
 
-    {useSimpleFooter ? <SimpleFooter /> : <Footer />}
+    <Footer />
   </div>
 );
 

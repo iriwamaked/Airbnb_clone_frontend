@@ -1,0 +1,135 @@
+.searchBar {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1fr auto;
+  align-items: center;
+  border: 1px solid #2C2823;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+  max-width: 845px;
+  border-radius: 26px;
+  background-color: #DDDBD7;
+  font-family: "Inknut Antiqua";
+  padding: 5px 10px;
+}
+
+.dateGroup {
+  display: flex;
+}
+
+.inputGroup {
+  flex: 1; /* чтобы оба поля заняли равную ширину */
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup input {
+    font-size: 12px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  /* Можно добавить, чтобы был плавный переход */
+  transition: border 0.3s ease;
+}
+
+.inputGroup label {
+    font-size: 12px;}
+
+.inputGroup input:focus{
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  /* Можно добавить, чтобы был плавный переход */
+  transition: border 0.3s ease;
+}
+
+.inputGroup:focus-within{
+    border-radius: 25px;
+    background-color: white;
+    padding: 5px 25px;
+    border: 0;
+}
+
+.inputGroupBorder{
+    border-right: 1px solid #1F222C;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  /* width: 100%; */
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  color: black;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+.searchButton {
+  padding: 0.3rem 0.7rem;
+  background-color: #6F6558;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.pickerWrapper, .guestWrapper {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  border-radius: 0.75rem;
+}
+
+.guestWrapper{
+    color: black;
+    left: 85%;
+}
+
+.end-block {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  gap: 30px;
+}
+
+.end-block div {
+  display: flex;
+  align-items: center;
+  gap: 30px; 
+}
+
+.close-calendar-button {
+    background-color: #6F6558;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.underline{
+    color: #211E1A;
+   text-decoration: underline;
+  cursor: pointer; /* если элемент кликабельный */
+}
+

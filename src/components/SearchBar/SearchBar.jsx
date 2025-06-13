@@ -74,7 +74,7 @@ const SearchBar = ({ onFocus, onBlur }) => {
       <div className={styles.searchBar}>
         {/* Куда */}
         <div className={styles.searchField} onClick={() => setOpen(open === "location" ? null : "location")}>
-          <label>Куда</label>
+          <label>Куди</label>
           <input type="text" value={location} readOnly />
           {open === "location" && (
             <div className={`${styles.dropdown} ${styles.dropdownGrid}`}>

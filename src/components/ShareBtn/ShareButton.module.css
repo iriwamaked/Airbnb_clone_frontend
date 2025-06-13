@@ -1,0 +1,31 @@
+.centered-link {
+  display: flex;
+  align-items: center; /* Центрирует иконку и текст по вертикали */
+  gap: 7px;            /* Отступ между иконкой и текстом */
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Меняем размер шрифта иконок
+без селектора :global шрифт не меняется, потому что класс  material-symbols-outlined - глобальный*/
+
+.centered-link :global(.material-symbols-outlined) {
+ font-size: 16px;
+} 
+
+.centered-link{
+    color: black;
+}
+/* .cardHorizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start; /* или center — по ситуации 
+  border: 1px solid #0d0909;
+}
+.card-img {
+     width: 100px;
+
+} */
+

@@ -1,97 +1,48 @@
 .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--color-primary-dark);
+  border-top: 1px solid var(--color-primary-dark);
   background-color: var(--color-light-bg);
-  color: var(--color-primary-dark);
-  padding: 10px 80px;
-  font-size: 14px;
+  height: 15px;
+  padding-top: 20px;
+ 
+  width: 1135px;
+  max-width: 1135px;
+  margin: 0 auto;
+  margin-bottom: 40px;
 }
 
-.ideas h3 {
-  font-family: var(--font-headings);
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.navTabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-bottom: 24px;
-  font-weight: 500;
-  border-bottom: 1px solid #aaa;
-  padding-bottom: 8px;
-}
-
-.navTabs span {
-  cursor: pointer;
-  color: #555;
-}
-
-.navTabs .active {
-  border-bottom: 2px solid var(--color-primary-dark);
-  color: var(--color-primary-dark);
-}
-
-.locations {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px 24px;
-  margin-top: 24px;
-}
-
-.locations p {
-  font-size: 13px;
-  color: #777;
-  margin: 0;
-}
-
-.columns {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 32px;
-  padding: 32px 0;
-}
-
-.columns h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.columns p {
-  margin: 6px 0;
-  color: #555;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid #aaa;
-  margin: 32px 0;
-}
-
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-size: 13px;
-  color: #777;
-}
-
-.links {
-  display: flex;
-  gap: 16px;
-}
-
-.right {
+.left, .right {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
+}
+
+.left a {
+  text-decoration: none;
+  color: var(--color-primary-dark);
+  opacity: 0.7;
+}
+
+.left a:hover {
+  opacity: 1;
+}
+
+.right span {
+  opacity: 0.7;
 }
 
 .right i {
   font-size: 18px;
   color: var(--color-primary-dark);
   cursor: pointer;
+}
+
+.right i:hover {
+  color: var(--color-accent);
 }

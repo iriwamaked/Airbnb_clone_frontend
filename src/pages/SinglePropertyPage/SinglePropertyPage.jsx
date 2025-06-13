@@ -1,5 +1,6 @@
 import styles from './SinglePropertyPage.module.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import {Helmet} from 'react-helmet-async';
 
 import FirstPropertyComponent from './1-propertyComponent/FirstPropertyComponent';
 import PropertyImagesComponent from './2-propertyImages/PropertyImagesComponent';
@@ -72,15 +73,26 @@ const SinglePropertyPage = () => {
     }
     if (!property) return <div className="d-flex justify-content-center align-items-center">Помилка завантаження данних</div>
 
-
+     const fullUrl = `https://localhost:5173/property/${property.id}`;
 
     return (
         <div className={styles.container}>
+            <Helmet>
+                <title>{property.title} - Оголошення</title>
+                 <meta property="og:title" content={property.title} />
+                <meta property="og:description" content={property.shortDescription || 'Оголошення про житло'} />
+                <meta property="og:image" content={property.images?.[0]?.src || ''} />
+                <meta property="og:url" content={fullUrl} />
+                <meta property="og:type" content="website" />
+            </Helmet>
+
             <FirstPropertyComponent
                 title={property.title}
                 rating={property.rating}
                 reviewsNumber={property.reviewsNumber}
                 location={`${property.city}, ${property.region}, ${property.country}`}
+                imageUrl={property.images[0].src}
+                shortDescription = {property.shortDescription}
 
             />
             <PropertyImagesComponent images={property.images} />
@@ -144,7 +156,7 @@ const SinglePropertyPage = () => {
             <hr className={`my-3 ${styles.divider}`} />
 
             <PropertyImportantInfo importantInfo={property.importantInfo}
-                maxGuests={property.maxGuestsNumber}
+                maxGuests={property.guestsRules.maxGuestsNumber}
                 openModal={openModal} />
 
             <TemporaryModal

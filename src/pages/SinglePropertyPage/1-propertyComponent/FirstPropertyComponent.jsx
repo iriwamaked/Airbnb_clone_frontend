@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+
 import { useState } from 'react';
 import styles from './FirstPropertyComponent.module.css';
 import PropTypes from 'prop-types';
+import ShareButton from '../../../components/ShareBtn/ShareButton';
 
-function FirstPropertyComponent({title, rating, reviewsNumber, location}) {
+function FirstPropertyComponent({title, rating, reviewsNumber, location, imageUrl, shortDescription}) {
 
     const [isSaved, setIsSaved] = useState(false);
 
@@ -31,10 +32,11 @@ function FirstPropertyComponent({title, rating, reviewsNumber, location}) {
                     </span>
                 </div>
                 <div className={styles["left-block"]}>
-                    <Link className={styles["centered-link"]}>
+                    <ShareButton imageUrl={imageUrl} shortDescription={shortDescription} title={title} />
+                    {/* <Link className={styles["centered-link"]}>
                         <i className="bi bi-share"></i>
                         <span className={styles["underline-text"]}>Поділитися</span>
-                    </Link>
+                    </Link> */}
                     <span onClick={toggleSave}
                         className={styles["centered-link"]}>
                         <span className={styles.smallIcon}>
@@ -52,7 +54,9 @@ FirstPropertyComponent.propTypes={
     title: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     reviewsNumber: PropTypes.number.isRequired,
-    location: PropTypes.string.isRequired
+    location: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    shortDescription: PropTypes.string.isRequired
 }
 
 export default FirstPropertyComponent;

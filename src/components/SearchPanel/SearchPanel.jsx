@@ -8,13 +8,14 @@ import GuestSelector from '../GuestsSelector/GuestSelector';
 
 import { setLocation } from './../../store/slices/locationSlice';
 import { setDateRange } from '../../store/slices/dataRangeSlice';
-import { loadGoogleMaps } from '../../utils/loadGoogleMaps';
+import { setGoogleApiReady } from '../../store/slices/googleApiSlice';
 
 import styles from './SearchPanel.module.css';
 
 const SearchPanel = () => {
     const dispatch = useDispatch();
 
+    const googleApiLoaded = useSelector(state => state.googleApi.ready);
     // Получаем даты из Redux, парсим в Date
     const startDateRaw = useSelector(state => state.dateRange.startDate);
     const endDateRaw = useSelector(state => state.dateRange.endDate);
@@ -36,17 +37,6 @@ const SearchPanel = () => {
     useOnClickOutside(guestsRef, () => setGuestsOpen(false));
     useOnClickOutside(locationRef, () => clearSuggestions());
 
-    // Загружаем Google API один раз
-    const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
-    useEffect(() => {
-        if (window.google && window.google.maps) {
-            // API уже загружен
-            setGoogleApiLoaded(true);
-        } else {
-            loadGoogleMaps().then(() => setGoogleApiLoaded(true));
-        }
-    }, []);
-
     // Используем хук без условий
     const {
         ready,
@@ -61,16 +51,6 @@ const SearchPanel = () => {
     useEffect(() => {
         setLocalLocation(value);
     }, [value]);
-
-
-
-    // // Обработка выбора локации
-    // const handleSelectLocation = (address) => {
-    //     setValue(address, false);
-    //     setLocalLocation(address);
-    //     dispatch(setLocation(address));
-    //     clearSuggestions();
-    // };
 
     // При выборе адреса — устанавливаем и в локальный стейт, и в Redux
     const handleSelectLocation = (address) => {
@@ -110,13 +90,19 @@ const SearchPanel = () => {
     const closeCalendar = () => {
         setDatesOpen(null);
     };
+
+//     useEffect(() => {
+//   console.log("Google Maps loaded:", !!window.google?.maps);
+//   console.log("Places API loaded:", !!window.google?.maps?.places);
+//   console.log("usePlacesAutocomplete ready:", ready);
+// }, [ready]);
     return (
         <div className={styles.searchBar}>
 
             {/* 1. Поле ввода локации */}
             <div className={`${styles.inputGroup} ${styles.inputGroupBorder}`} ref={locationRef}>
                 <label className="text-center">Куди</label>
-                {googleApiLoaded ? (
+                {ready? (
                     <>
                         <input
                             type="text"
@@ -129,7 +115,7 @@ const SearchPanel = () => {
                                 dispatch(setLocation(''));   // очищаем выбранную локацию в Redux
                                 clearSuggestions();          // убираем подсказки
                             }}
-                            disabled={!ready}
+                            // disabled={!ready}
                             autoComplete="on"
                             className="text-center"
                         />

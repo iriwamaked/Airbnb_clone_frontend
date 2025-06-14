@@ -10,7 +10,7 @@ import './CustomDatePicker.css'; // пользовательские стили 
 
 import DatePicker, { registerLocale } from 'react-datepicker';
 import uk from 'date-fns/locale/uk';
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 // Регистрация украинской локали
@@ -47,6 +47,10 @@ const CustomDatePicker = ({
  //переменная для количества месяцев календаря, которые отображаются (по умолчанию - два)
   const [monthsToShow, setMonthsToShow] = useState(2); 
 
+   // Если wrapperRef не передан, создаём свой внутренний ref
+  const localWrapperRef = useRef(null);
+  const refToUse = wrapperRef || localWrapperRef;
+
   // Следим за шириной окна (АДАПТИВНОСТЬ)
   useEffect(() => {
     const handleResize = () => {
@@ -74,8 +78,8 @@ const CustomDatePicker = ({
     const handleClick = (e) => {
       if (
         //проверки, чтобы рекция была только на те части календаря, которые не являются датами
-        wrapperRef.current &&
-        wrapperRef.current.contains(e.target) &&
+        refToUse.current &&
+        refToUse.current.contains(e.target) &&
         !e.target.classList.contains('react-datepicker__day') &&
         !e.target.classList.contains('react-datepicker__day--selected') &&
         !e.target.classList.contains('react-datepicker__day--in-range') &&
@@ -94,7 +98,7 @@ const CustomDatePicker = ({
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, [onChange, wrapperRef]);
+  }, [onChange, refToUse]);
 
 
   // Проверка, содержит ли диапазон хотя бы одну занятую дату

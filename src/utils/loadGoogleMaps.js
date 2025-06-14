@@ -6,4 +6,19 @@ const loader = new Loader({
   libraries: ["places"],
 });
 
-export const loadGoogleMaps = () => loader.load();
+export const loadGoogleMaps = async () => {
+  try {
+    await loader.load();
+
+    // Проверка, что всё загружено
+    if (window.google && window.google.maps && window.google.maps.places) {
+      console.log("✅ Google Maps и Places API загружены");
+      return true;
+    } else {
+      throw new Error("❌ Google Maps API не полностью загружен");
+    }
+  } catch (err) {
+    console.error("❌ Ошибка при загрузке Google Maps:", err);
+    return false;
+  }
+};

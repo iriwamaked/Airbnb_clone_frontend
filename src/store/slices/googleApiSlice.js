@@ -2,15 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const googleApiSlice = createSlice({
   name: 'googleApi',
-  initialState: {
-    ready: false,
-  },
+  initialState: { ready: false },
   reducers: {
-    setReady(state, action) {
+    setGoogleApiReady(state, action) {
       state.ready = action.payload;
     },
   },
 });
 
-export const { setReady } = googleApiSlice.actions;
+export const { setGoogleApiReady } = googleApiSlice.actions;
 export default googleApiSlice.reducer;

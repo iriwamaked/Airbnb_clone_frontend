@@ -12,12 +12,12 @@ import './styles/App.module.css'; // Глобальные стили
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <HelmetProvider>
     <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
     </Provider></HelmetProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

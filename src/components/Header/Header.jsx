@@ -16,7 +16,7 @@ import SearchPanel from "../SearchPanel/SearchPanel";
 
 // import { useLoadGoogleMaps } from "../../hooks/useLoadGoogleMapsLib";
 
-const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated, googleReady }) => {
+const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated}) => {
   const location = useLocation();
   const isProfilePage = location.pathname === "/profile";
   const isVerificationFlow = location.pathname.startsWith("/verification");
@@ -49,9 +49,7 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated, goo
     return () => clearTimeout(timer);
   }, []);
 
-  const googleReadyClick=()=>{
-    console.log(`GoogleReady ${googleReady}`);
-  }
+
   return (
     <header className={`${styles.header} ${withUnderline ? styles.underline : ""} ${isActive ? styles.active : ""}`}>
       <div className={`${styles.row} ${styles["top-row"]}`}>
@@ -98,7 +96,7 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated, goo
       </div>
       <div className={styles.searchContainer} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
                
-        <SearchPanel onClick={googleReadyClick}/>
+        <SearchPanel/>
         {/* {googleApiLoaded ? (
           <SearchPanel />
         ) : (

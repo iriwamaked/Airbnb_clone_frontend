@@ -35,7 +35,7 @@ function IdeasForTravellsContent({ideasCategory}){
     );
 }
 
-IdeasForTravellsContent.PropTypes={
+IdeasForTravellsContent.propTypes={
   ideasCategory: PropTypes.string.isRequired
 }
 

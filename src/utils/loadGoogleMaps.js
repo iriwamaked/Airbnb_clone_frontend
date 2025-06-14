@@ -1,26 +1,9 @@
-export function loadGoogleMaps(apiKey) {
-  return new Promise((resolve, reject) => {
-    if (window.google && window.google.maps) {
-      resolve(window.google);
-      return;
-    }
+import { Loader } from "@googlemaps/js-api-loader";
 
-    const existingScript = document.getElementById("google-maps-script");
-    if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(window.google));
-      existingScript.addEventListener("error", reject);
-      return;
-    }
+const loader = new Loader({
+  apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+  version: "weekly",
+  libraries: ["places"],
+});
 
-    const script = document.createElement("script");
-    script.id = "google-maps-script";
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-    script.async = true;
-    script.defer = true;
-
-    script.onload = () => resolve(window.google);
-    script.onerror = (err) => reject(err);
-
-    document.head.appendChild(script);
-  });
-}
+export const loadGoogleMaps = () => loader.load();

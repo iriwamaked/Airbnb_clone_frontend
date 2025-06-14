@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -14,13 +14,17 @@ import VerificationEntryPage from './pages/VerificationEntryPage/VerificationEnt
 
 
 import { getUser, logout } from "./utils/auth";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 import OnePropertyPage from "./pages/OnePropertyPage/OnePropertyPage";
 
 import styles from "./styles/App.module.css";
 import TestPage from "./pages/TestPage";
 import SinglePropertyPage from "./pages/SinglePropertyPage/SinglePropertyPage";
+
+import { loadGoogleMaps } from "./utils/loadGoogleMaps";
+import { useDispatch, useSelector } from 'react-redux';
+import { setReady } from "./store/slices/googleApiSlice";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,6 +46,16 @@ const pathname = location.pathname;
     navigate("/");
   };
   //console.log("App рендерится");
+const dispatch = useDispatch();
+  const googleReady = useSelector(state => state.googleMaps?.ready ?? false);
+   useEffect(() => {
+   
+    loadGoogleMaps().then(() => {
+       console.log("GoogleMaps was loaded");
+      dispatch(setReady(true))})
+      .catch((err) => console.error("❌ Google Maps загрузка не удалась", err));
+    
+  }, [dispatch]);
 
   return (
   <div className="app-layout">
@@ -50,6 +64,7 @@ const pathname = location.pathname;
       user={user}
       isAuthenticated={isAuthenticated}
       onLogout={handleLogout}
+      googleReady={googleReady}
     />
 
     <AuthModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

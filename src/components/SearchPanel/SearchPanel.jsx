@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
@@ -8,6 +8,7 @@ import GuestSelector from '../GuestsSelector/GuestSelector';
 
 import { setLocation } from './../../store/slices/locationSlice';
 import { setDateRange } from '../../store/slices/dataRangeSlice';
+import { loadGoogleMaps } from '../../utils/loadGoogleMaps';
 
 import styles from './SearchPanel.module.css';
 
@@ -23,7 +24,7 @@ const SearchPanel = () => {
     // Локальные состояния
     const [datesOpen, setDatesOpen] = useState(null); // null | 'arrival' | 'departure'
     const [guestsOpen, setGuestsOpen] = useState(false);
-    const [location, setLocalLocation] = useState('');
+    // const [location, setLocalLocation] = useState('');
 
     // Рефы для отслеживания клика вне
     const dateRef = useRef(null);
@@ -35,13 +36,45 @@ const SearchPanel = () => {
     useOnClickOutside(guestsRef, () => setGuestsOpen(false));
     useOnClickOutside(locationRef, () => clearSuggestions());
 
-    // Google Places Autocomplete
-    const { ready, value, suggestions: { status, data }, setValue, clearSuggestions } = usePlacesAutocomplete();
+    // Загружаем Google API один раз
+    const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
+    useEffect(() => {
+        if (window.google && window.google.maps) {
+            // API уже загружен
+            setGoogleApiLoaded(true);
+        } else {
+            loadGoogleMaps().then(() => setGoogleApiLoaded(true));
+        }
+    }, []);
 
-    // Обработка выбора локации
+    // Используем хук без условий
+    const {
+        ready,
+        value,
+        suggestions: { status, data },
+        setValue,
+        clearSuggestions
+    } = usePlacesAutocomplete();
+
+    // Синхронизация value и location
+    const [location, setLocalLocation] = useState(value);
+    useEffect(() => {
+        setLocalLocation(value);
+    }, [value]);
+
+
+
+    // // Обработка выбора локации
+    // const handleSelectLocation = (address) => {
+    //     setValue(address, false);
+    //     setLocalLocation(address);
+    //     dispatch(setLocation(address));
+    //     clearSuggestions();
+    // };
+
+    // При выборе адреса — устанавливаем и в локальный стейт, и в Redux
     const handleSelectLocation = (address) => {
         setValue(address, false);
-        setLocalLocation(address);
         dispatch(setLocation(address));
         clearSuggestions();
     };
@@ -81,27 +114,39 @@ const SearchPanel = () => {
         <div className={styles.searchBar}>
 
             {/* 1. Поле ввода локации */}
-            <div className={`${styles.inputGroup} ${styles.inputGroupBorder} `} ref={locationRef}>
-                <label className='text-center'>Куди</label>
-                <input
-                    type="text"
-                    value={value}
-                    onChange={e => setValue(e.target.value)}
-                    onClick={() => setValue(value, false)}  // при клике повторно «активируем» подсказки
-                    placeholder="Почніть вводити населений пункт"
-                    disabled={!ready}
-                    autoComplete="on"
-                    className='text-center'
-                />
-                {status === 'OK' && (
-                    <ul className={styles.suggestions}>
-                        {data.map(({ place_id, description }) => (
-                            <li key={place_id} onClick={() => handleSelectLocation(description)}>
-                                {description}
-                            </li>
-                        ))}
-                    </ul>
+            <div className={`${styles.inputGroup} ${styles.inputGroupBorder}`} ref={locationRef}>
+                <label className="text-center">Куди</label>
+                {googleApiLoaded ? (
+                    <>
+                        <input
+                            type="text"
+                            value={value}
+                            onChange={e => setValue(e.target.value)}
+                            onClick={() => setValue(value, false)}
+                            placeholder="Почніть вводити населений пункт"
+                            onDoubleClick={() => {
+                                setValue('', false);         // очищаем input
+                                dispatch(setLocation(''));   // очищаем выбранную локацию в Redux
+                                clearSuggestions();          // убираем подсказки
+                            }}
+                            disabled={!ready}
+                            autoComplete="on"
+                            className="text-center"
+                        />
+                        {status === "OK" && (
+                            <ul className={styles.suggestions}>
+                                {data.map(({ place_id, description }) => (
+                                    <li key={place_id} onClick={() => handleSelectLocation(description)}>
+                                        {description}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </>
+                ) : (
+                    <div>Список населених пунктів завантажується...</div>
                 )}
+                {/* ... */}
             </div>
 
             {/* 2. Даты — два поля и общий календарь */}
@@ -144,7 +189,7 @@ const SearchPanel = () => {
                                 onChange={handleDateChange}
                             />
                             <div className={`${styles["end-block"]}`}>
-                           
+
                                 <span className={styles.underline} onClick={clearDates}>Очистити дати </span>
 
                                 <button
@@ -152,10 +197,10 @@ const SearchPanel = () => {
                                     className={styles["close-calendar-button"]}  >
                                     Закрити
                                 </button>
-                            
+
+                            </div>
                         </div>
-                        </div>
-                        
+
                     </>
 
                 )}

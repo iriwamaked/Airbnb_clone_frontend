@@ -5,6 +5,7 @@ import SimpleFooter from "./components/SimpleFooter/SimpleFooter";
 import { logout } from "./store/slices/authSlice"; 
 import { useDispatch } from "react-redux";
 
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
@@ -63,6 +64,7 @@ const useSimpleFooter = ["/profile", "/verification", "/verification-start"].som
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/verification" element={<VerificationPage />} />
         <Route path="/verification-start" element={<VerificationEntryPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </main>
 

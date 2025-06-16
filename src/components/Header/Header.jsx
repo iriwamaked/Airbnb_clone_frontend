@@ -41,9 +41,9 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated}) =>
     timer = setTimeout(() => setIsActive(false), 3000);
   };
 
-  const handleSearch = (query) => {
-    console.log("🔍 Поиск по запросу:", query);
-  };
+  // const handleSearch = (query) => {
+  //   console.log("🔍 Поиск по запросу:", query);
+  // };
 
   useEffect(() => {
     return () => clearTimeout(timer);

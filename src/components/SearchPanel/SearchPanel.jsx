@@ -8,14 +8,14 @@ import GuestSelector from '../GuestsSelector/GuestSelector';
 
 import { setLocation } from './../../store/slices/locationSlice';
 import { setDateRange } from '../../store/slices/dataRangeSlice';
-import { setGoogleApiReady } from '../../store/slices/googleApiSlice';
+
 
 import styles from './SearchPanel.module.css';
 
 const SearchPanel = () => {
     const dispatch = useDispatch();
 
-    const googleApiLoaded = useSelector(state => state.googleApi.ready);
+    // const googleApiLoaded = useSelector(state => state.googleApi.ready);
     // Получаем даты из Redux, парсим в Date
     const startDateRaw = useSelector(state => state.dateRange.startDate);
     const endDateRaw = useSelector(state => state.dateRange.endDate);

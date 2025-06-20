@@ -2,11 +2,13 @@ import { Container, Col, Row } from "react-bootstrap";
 import styles from './PropertyImportantInfo.module.css';
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import {selectedStartDate } from './../../../store/selectors/selectDateRange'
 
 const PropertyImportantInfo = ({ importantInfo, maxGuests, openModal }) => {
-    const startDate = useSelector(state =>
-        state.dateRange.startDate ? new Date(state.dateRange.startDate) : null
-    );
+    // const startDate = useSelector(state =>
+    //     state.dateRange.startDate ? new Date(state.dateRange.startDate) : null
+    // );
+    const startDate=useSelector(selectedStartDate)
 
     const cancelPolicy = importantInfo.cancelPolicy?.[0];
     const freeCancelationDays = cancelPolicy?.freeCancelationDays || 0;

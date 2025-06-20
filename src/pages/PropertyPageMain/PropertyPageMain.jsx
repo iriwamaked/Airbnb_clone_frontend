@@ -40,8 +40,9 @@ function RowColLayoutExample() {
 
   const navigate = useNavigate(); 
   
-  const handleCardClick=(id)=>{
-    navigate(`/product/${id}`);
+  const handleCardClick=()=>{
+    // navigate(`/product/${id}`);
+    navigate(`/singleproperty`)
   }
 
   return (

@@ -117,7 +117,7 @@ const GuestSelector = ({ maxGuests = Infinity, onClose, petsAllowed = false, max
 }
 
 GuestSelector.propTypes = {
-    maxGuests: PropTypes.number.isRequired,
+    maxGuests: PropTypes.number,
     onClose: PropTypes.func.isRequired,
     petsAllowed: PropTypes.bool,
     maxPets: PropTypes.number,

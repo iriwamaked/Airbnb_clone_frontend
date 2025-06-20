@@ -5,7 +5,7 @@ import { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDateRange, clearDateRange } from '../../../store/slices/dataRangeSlice';
-
+import {selectedStartDate, selectedEndDate } from './../../../store/selectors/selectDateRange'
 
 const PropertyCalendar = ({ city, busyDates }) => {
     // // Стейт для выбранного диапазона
@@ -16,9 +16,11 @@ const PropertyCalendar = ({ city, busyDates }) => {
     //обертка вокруг календаря
     const wrapperRef = useRef(null);
 
-    const startDate = useSelector(state => state.dateRange.startDate ? new Date(state.dateRange.startDate) : null);
-    const endDate = useSelector(state => state.dateRange.endDate ? new Date(state.dateRange.endDate) : null)
+    // const startDate = useSelector(state => state.dateRange.startDate ? new Date(state.dateRange.startDate) : null);
+    // const endDate = useSelector(state => state.dateRange.endDate ? new Date(state.dateRange.endDate) : null)
 
+    const startDate = useSelector(selectedStartDate);
+    const endDate = useSelector(selectedEndDate);
     const nightsCount = useMemo(() => {
         if (!startDate || !endDate) return 0;
         return Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));

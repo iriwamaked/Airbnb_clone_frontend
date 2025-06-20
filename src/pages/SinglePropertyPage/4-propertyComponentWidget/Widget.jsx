@@ -142,7 +142,7 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                         >
                         {guestLabel}
                         {showGuests && (
-                            <GuestSelector maxGuests={maxGuests} petsAllowed={petsAllowed} maxPets={maxPets}
+                            <GuestSelector maxGuests={maxGuests} petsAllowed={petsAllowed} maxPets={maxPets} mode="property"
                                 onClose={() => { setShowGuests(false); }} />
                         )}
 

@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
 import styles from './PropertyPageMain.module.css';
+import {useNavigate} from 'react-router-dom';
 
 function RowColLayoutExample() {
   const [data, setData] = useState([]);
@@ -37,13 +38,19 @@ function RowColLayoutExample() {
     setPage(prev => prev + 1);
   };
 
+  const navigate = useNavigate(); 
+  
+  const handleCardClick=(id)=>{
+    navigate(`/product/${id}`);
+  }
+
   return (
     <>
       <Container fluid className="mt-3">
         <Row xs={2} md={4} lg={6}>
           {data.map(item => (
             <Col key={item.id}>
-              <Card className={styles['adaptive-card']}>
+              <Card className={styles['adaptive-card']} >
                 <Carousel slide={false} interval={null}>
                   {item.attributes.images.map((image, index) => (
                     <Carousel.Item key={index}>
@@ -55,6 +62,7 @@ function RowColLayoutExample() {
                     </Carousel.Item>
                   ))}
                 </Carousel>
+                <div onClick={()=>handleCardClick(item.i)}>
                 <Card.Title className="d-flex justify-content-between align-items-center">
                   <span className={styles['card-title']}>{item.attributes.location}</span>
                   <span className={styles.rating}>
@@ -66,6 +74,7 @@ function RowColLayoutExample() {
                   {item.category[0]} <br />
                   {item.attributes.price} грн. (ніч)
                 </Card.Text>
+                </div>
               </Card>
             </Col>
           ))}

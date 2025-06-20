@@ -77,6 +77,7 @@ function App() {
           <Route path="/oneproperty" element={<OnePropertyPage />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/singleproperty" element={<SinglePropertyPage />} />
+          <Route path="/property/:id" element={<SinglePropertyPage />} />
         </Routes>
       </main>
 

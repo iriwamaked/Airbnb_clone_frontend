@@ -5,7 +5,7 @@ import PropertyPageMain from "../PropertyPageMain/PropertyPageMain"
 import propertiesData from "../../data/properties"; // ✅ Импортируем данные
 import styles from "./HomePage.module.css";
 import IdeasForTravellsPage from "../../components/IdeasForTravels/IdeasForTravellsPage/IdeasForTravellsPage";
-import LinksBlockForFooter from "../../components/LinksBlockForFooter/LinksBlockForFooter";
+
 
 const HomePage = () => {
   const [properties, setProperties] = useState(propertiesData);
@@ -45,7 +45,7 @@ const HomePage = () => {
       <PropertyPageMain />
       <IdeasForTravellsPage/>
 
-      <LinksBlockForFooter/>
+      
     </div>
 
 

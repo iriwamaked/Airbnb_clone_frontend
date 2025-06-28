@@ -1,0 +1,325 @@
+{
+    "meta": {
+        "status": 200,
+        "message": "Ok"
+    },
+    "data": {
+        "id": 1,
+        "category": [
+            "Центр міста",
+            "Зручне розташування"
+        ],
+        "attributes": {
+            "title": "Cтудія та спальня з панорамою на місто! Біля Моря!",
+            "rating": 4.9,
+            "reviewsNumber": 35,
+            "city": "Одеса",
+            "region": "Одеська область",
+            "country": "Україна",
+            "shortDescription": "Помешкання для оренди",
+            "description": "Вона оснащена кондиціонером і безкоштовним Wi-Fi. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Ви можете відпочити на затишній терасі, насолоджуючись видом на море. Квартира розміром 24 метри з повністю обладнаною кухнею з мікроволновою піччю, вітальнею, телевізором з плоским екраном, власною ванною кімнатою з правльною машиною, феном. Є Холодильник, плита, чайник. Спальне місце - двоспальне ліжко. На території комплексу розташовані магазин, аптека, кавярня та інші сервіси, поруч...",
+            "locationDescription": "Перша лінія від моря, Аркадія, Французький бульвар",
+            "images": [
+                {
+                    "src": "https://a0.muscache.com/im/pictures/0a159d56-b424-4a61-a319-4f968e356974.jpg?im_w=1200",
+                    "alt": "Головне зображення"
+                },
+                {
+                    "src": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6OTU3NDMzODg5OTI4MDYzODYw/original/95cd745b-97c6-44a3-9e0f-4a4505694670.jpeg?im_w=720",
+                    "alt": "Вид з балкону"
+                },
+                {
+                    "src": "https://a0.muscache.com/im/pictures/a216b740-2a26-4683-b79c-fae9fb585204.jpg?im_w=720",
+                    "alt": "Кухня"
+                },
+                {
+                    "src": "https://a0.muscache.com/im/pictures/73a7cef6-3664-4966-a878-893e1df13c63.jpg?im_w=720",
+                    "alt": "Cпальня"
+                },
+                {
+                    "src": "https://a0.muscache.com/im/pictures/3269baa6-07cd-4901-a52e-9d43904fb86c.jpg?im_w=720",
+                    "alt": "Ванна кімната"
+                }
+            ],
+            "guestsRules": {
+                "maxGuestsNumber": 4,
+                "petsAllowed": true,
+                "maxPetsNumber": 2,
+                "petsAddedPrice": 0
+            },
+            "pricePerNight": 180,
+            "priceForAddServices": [
+                {
+                    "name": "Плата за прибирання",
+                    "forcibly": true,
+                    "price": 20
+                },
+                {
+                    "name": "Додатковий комплект рушників",
+                    "forcibly": false,
+                    "price": 10
+                }
+            ],
+            "bedroomsNumber": 1,
+            "bedNumber": 1,
+            "bathroomsNumber": 1,
+            "advantages": [
+                {
+                    "title": "Окреме робоче місце",
+                    "description": "Зона спільного користування з Wi-Fi, яка добре підходить для роботи"
+                },
+                {
+                    "title": "Cамостійне прибуття",
+                    "description": "Самостійне прибуття за допомогою ключа в сейфі"
+                },
+                {
+                    "title": "Безкоштовне скасування бронювання до 30 грудня",
+                    "description": ""
+                }
+            ],
+            "placeForSleep": [
+                {
+                    "src": "https://a0.muscache.com/im/pictures/e716e3eb-a07f-4b94-ae48-569fb8e581ba.jpg?im_w=720",
+                    "alt": "Зручна двоспальна кровать"
+                }
+            ],
+            "_comment2": "удобства (!!!используются иконки из material-design https://fonts.google.com/icons?icon.size=24&icon.color=%231f1f1f:",
+            "facilities": [
+                {
+                    "IconName": "fork_spoon",
+                    "name": "Кухня"
+                },
+                {
+                    "IconName": "local_laundry_service",
+                    "name": "Пральна та сушильна машина"
+                },
+                {
+                    "IconName": "oven_gen",
+                    "name": "Укомплектована кухня"
+                },
+                {
+                    "IconName": "bed",
+                    "name": "Окреме місце для сну"
+                },
+                {
+                    "IconName": "wifi",
+                    "name": "Wi-Fi"
+                },
+                {
+                    "IconName": "tv",
+                    "name": "Телевізор HDTV з 32-дюймовим екраном та стандартне кабельне ТБ Netflix, преміальне кабельне підключення."
+                },
+                {
+                    "IconName": "elevator",
+                    "name": "Ліфт"
+                },
+                {
+                    "IconName": "climate_mini_split",
+                    "name": "Система кондиціонування"
+                },
+                {
+                    "IconName": "self_care",
+                    "name": "Фен"
+                },
+                {
+                    "IconName": "garage",
+                    "name": "Паркінг"
+                },
+                {
+                    "IconName": "fork_spoon",
+                    "name": "Кухня"
+                },
+                {
+                    "IconName": "local_laundry_service",
+                    "name": "Пральна та сушильна машина"
+                },
+                {
+                    "IconName": "oven_gen",
+                    "name": "Укомплектована кухня"
+                },
+                {
+                    "IconName": "bed",
+                    "name": "Окреме місце для сну"
+                },
+                {
+                    "IconName": "wifi",
+                    "name": "Wi-Fi"
+                },
+                {
+                    "IconName": "tv",
+                    "name": "Телевізор HDTV з 32-дюймовим екраном та стандартне кабельне ТБ Netflix, преміальне кабельне підключення."
+                },
+                {
+                    "IconName": "elevator",
+                    "name": "Ліфт"
+                },
+                {
+                    "IconName": "climate_mini_split",
+                    "name": "Система кондиціонування"
+                },
+                {
+                    "IconName": "self_care",
+                    "name": "Фен"
+                },
+                {
+                    "IconName": "garage",
+                    "name": "Паркінг"
+                }
+            ],
+            "_comment": "занятые даты:",
+            "booked_dates": [
+                {
+                    "from": "2025-06-01",
+                    "to": "2025-06-05"
+                },
+                {
+                    "from": "2025-06-22",
+                    "to": "2025-06-29"
+                },
+                {
+                    "from": "2025-07-09",
+                    "to": "2025-07-15a"
+                },
+                {
+                    "from": "2025-08-01",
+                    "to": "2025-08-05"
+                },
+                {
+                    "from": "2025-08-10",
+                    "to": "2025-08-12"
+                }
+            ],
+            "ratingCriterias": [
+                {
+                    "name": "Чистота",
+                    "score": 4.9
+                },
+                {
+                    "name": "Комунікація",
+                    "score": 4.9
+                },
+                {
+                    "name": "Прибуття",
+                    "score": 4.9
+                },
+                {
+                    "name": "Точність",
+                    "score": 4.9
+                },
+                {
+                    "name": "Розташування",
+                    "score": 4.9
+                },
+                {
+                    "name": "Ціна/якість",
+                    "score": 4.9
+                }
+            ],
+            "comments": [
+                {
+                    "userAvatar": "/testDataProperty/img/reviews/oleksandr.png",
+                    "alt": "Oleksandr",
+                    "userName": "Oleksandr",
+                    "commentText": "Однозначно рекомендую, все було на високому рівні"
+                },
+                {
+                    "userAvatar": "/testDataProperty/img/reviews/darina.png",
+                    "alt": "Darina",
+                    "userName": "Дарина",
+                    "commentText": "Дуже дякую за гарні апартаменти! Дуже близько до пляжу, а сама квартира просто вау"
+                },
+                {
+                    "userAvatar": "/testDataProperty/img/reviews/darya.png",
+                    "alt": "Darya",
+                    "userName": "Дарья",
+                    "commentText": "Всі фото відповідають дійсності. Виз з вікна просто неймовірний! Рошташування дуже зручне, 2 хвилини пішки до моря і до траси здоров'я."
+                },
+                {
+                    "userAvatar": "/testDataProperty/img/reviews/daniil.png",
+                    "alt": "Daniil",
+                    "userName": "Даниил",
+                    "commentText": "Все  пройшло чудово! Місцерозташування квартири, саме житло та господар - 5 зірок! Рекомендую."
+                },
+                {
+                    "userAvatar": "/testDataProperty/img/reviews/cergei.png",
+                    "alt": "Sergei",
+                    "userName": "Сергій",
+                    "commentText": "Все було чудово! Дар'я завжди готова допомогти! Вид з вікна окреми вид задоволення."
+                },
+                {
+                    "userAvatar": "/testDataProperty/img/reviews/sveta.png",
+                    "alt": "Sveta",
+                    "userName": "Sveta",
+                    "commentText": "Дуже гарна квартира і дуже гарна господиня. Прекрасний вид на найкраще в світі море!!!  Це відпочинок для душі!!! Даша, дуже дуже вам дякую за все."
+                }
+            ],
+            "_commentLocation": "местонахождение: ЛОКАЦИЯ ГуглМапс:",
+            "locationCoords": {
+                "latitude": 46.45895,
+                "longitude": 30.763547
+            },
+            "_commentOwner": "Данные о хозяине",
+            "owner": {
+                "name": "Ілона",
+                "avatar": {
+                    "src": "./testDataProperty/img/Owner.png",
+                    "alt": "Ваш господар - Ілона"
+                },
+                "registrationDate": "2025-06-01",
+                "reviewsNumber": 35,
+                "isVerificated": true,
+                "languages": [
+                    "English",
+                    "Українська"
+                ],
+                "responseSpeed": 100,
+                "responseSpeedDuration": "протягом декількох годин"
+            },
+            "importantInfo": {
+                "homeRules": [
+                    {
+                        "type": "arrival",
+                        "text": "Прибуття: після 13:00"
+                    },
+                    {
+                        "type": "departure",
+                        "text": "Виїзд: до 10:00"
+                    },
+                    {
+                        "type": "pets",
+                        "text": "З тваринами заборонено"
+                    },
+                    {
+                        "type": "parties",
+                        "text": "Без вечірок та заходів"
+                    }
+                ],
+                "safetyRules": [
+                    {
+                        "type": "smokeDetector",
+                        "label": "Датчик диму"
+                    },
+                    {
+                        "type": "carbonMonoxideDetector",
+                        "label": "Датчик чадного газу"
+                    },
+                    {
+                        "type": "firstAid",
+                        "label": "Аптечка"
+                    },
+                    {
+                        "type": "fireExtinguisher",
+                        "label": "Вогнегасник"
+                    }
+                ],
+                "cancelPolicy": [
+                    {
+                        "freeCancelationDays": 14,
+                        "partCancelationDays": 4,
+                        "partCancelationPercent": 50
+                    }
+                ]
+            }
+        }
+    }
+}

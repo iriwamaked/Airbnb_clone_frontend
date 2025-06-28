@@ -4,6 +4,12 @@
   background-color: var(--color-light-bg);
 }
 
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-light-bg);
+}
+
 .profilePage {
   display: grid;
   grid-template-columns: auto 1fr;

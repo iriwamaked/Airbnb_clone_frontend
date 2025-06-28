@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap');
 
 html, body, #root {
-  height: 100%;
-  margin: 0;
+
+  min-height: 100%;
+  height: auto;
+  
 }
 :root {
   --color-primary-dark: #211E1A;
@@ -17,7 +19,8 @@ html, body, #root {
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-main);
+
+  /* font-family: var(--font-main); */
   background-color: var(--color-light-bg);
   color: var(--color-primary-dark);
   -webkit-font-smoothing: antialiased;
@@ -28,9 +31,10 @@ h1, h2, h3, h4 {
   color: var(--color-primary-dark);
 }
 
-p, span, li, input, textarea, button {
+
+/* p, span, li, input, textarea, button {
   font-family: var(--font-main);
-}
+} */
 .app-layout {
   display: flex;
   flex-direction: column;

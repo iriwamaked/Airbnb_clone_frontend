@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+
+.container {
+    font-family: "Inder", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 40px 0;
+}
+
+.h5{
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.p{
+    font-size: 12px;
+}
+

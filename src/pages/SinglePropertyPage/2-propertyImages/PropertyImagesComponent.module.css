@@ -1,0 +1,8 @@
+.container-limited {
+  max-height: 550px;
+height: 550px;
+overflow: hidden;
+display: flex;
+margin-top: 15px;
+}
+

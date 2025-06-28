@@ -1,11 +1,12 @@
 import { useState } from "react";
-import PropertyCard from "../../components/PropertyCards/PropertyCard";
+// import PropertyCard from "../../components/PropertyCards/PropertyCard";
 import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
 import PropertyPageMain from "../PropertyPageMain/PropertyPageMain"
 import propertiesData from "../../data/properties"; // ✅ Импортируем данные
 import styles from "./HomePage.module.css";
-import IdeasForTravellsPage from '../../components/IdeasForTravels/IdeasForTravellsPage/IdeasForTravellsPage'
+import IdeasForTravellsPage from "../../components/IdeasForTravels/IdeasForTravellsPage/IdeasForTravellsPage";
 
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   const [properties, setProperties] = useState(propertiesData);
@@ -29,25 +30,31 @@ const HomePage = () => {
 
   return (
     <div className={styles.home}>
-      <CategoryFilters selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
-      <div className={styles.filtersBar}>
-</div>
+       <Helmet>
+        <title>Головна - пошук житла</title>
+        <meta name="description" content="Знайдіть ідеальне житло для Вашої подорожі." />
+      </Helmet>
 
-      {/* <div className={styles.grid}>
+      <CategoryFilters 
+          className={styles.stickyFilters}
+          selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
+     
+   {/* <div className={styles.grid}>
         {properties.length > 0 ? (
           properties.map((property) => <PropertyCard key={property.id} {...property} />)
         ) : (
           <p className={styles.noResults}>Ничего не найдено 😞</p>
         )}
       </div> */}
+   
 
-      <PropertyPageMain/>
+      <PropertyPageMain />
       <IdeasForTravellsPage/>
-      
 
+      
     </div>
 
-    
+
   );
 };
 

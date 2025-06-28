@@ -5,17 +5,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inknut Antiqua", serif;
+  /* font-family: "Inknut Antiqua", serif; */
 }
 
 .app {
     background-color: #DCDAD6;
     color: #433D35;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     max-width: 1920px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    position: relative;
   }
-  
-  

@@ -4,7 +4,7 @@ import styles from "./SearchBar.module.css";
 import PropTypes from "prop-types";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import ru from "date-fns/locale/ru";
+import {uk} from "date-fns/locale";
 
 const continents = [
   "Северная Америка", "Южная Америка", "Европа",
@@ -47,7 +47,7 @@ const SearchBar = ({ onFocus, onBlur }) => {
   const [isSelectingStart, setIsSelectingStart] = useState(true);
 
   const formatDate = (date) =>
-    date.toLocaleDateString("ru-RU", {
+    date.toLocaleDateString("uk-UA", {
       day: "2-digit",
       month: "short",
       year: "numeric",
@@ -74,7 +74,7 @@ const SearchBar = ({ onFocus, onBlur }) => {
       <div className={styles.searchBar}>
         {/* Куда */}
         <div className={styles.searchField} onClick={() => setOpen(open === "location" ? null : "location")}>
-          <label>Куда</label>
+          <label>Куди</label>
           <input type="text" value={location} readOnly />
           {open === "location" && (
             <div className={`${styles.dropdown} ${styles.dropdownGrid}`}>
@@ -111,7 +111,7 @@ const SearchBar = ({ onFocus, onBlur }) => {
                 onChange={handleDateChange}
                 moveRangeOnFirstSelection={false}
                 ranges={dateRange}
-                locale={ru}
+                locale={uk}
               />
             </div>
           )}

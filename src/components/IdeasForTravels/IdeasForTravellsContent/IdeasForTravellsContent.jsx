@@ -1,6 +1,11 @@
 // import styles from "./IdeasForTravellsContens.module.css";
 import { useEffect,useState } from "react";
 import PropTypes from 'prop-types';
+import styles from './IdeasForTravellsContent.module.css'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function IdeasForTravellsContent({ideasCategory}){
     const [items, setItems]= useState([]);
@@ -14,18 +19,23 @@ function IdeasForTravellsContent({ideasCategory}){
     },[ideasCategory]);
 
     return(
-        <div style={{ marginTop: '1rem' }}>
-      <h4>Результати для: {ideasCategory}</h4>
-      <ul>
-        {items.map(item => (
-          <li key={item.name}>{item.name} {item.description}</li>
+      <Container className={styles.container}>
+        <Row xs={2} md={4} lg={6}>
+        {items.map(item=>(
+          
+            <Col key={item.name}
+                 >
+                <h5 className={styles.h5}>{item.name}</h5>
+                <p className={styles.p}>{item.description}</p>
+            </Col>
+          
         ))}
-      </ul>
-    </div>
+        </Row>
+      </Container>
     );
 }
 
-IdeasForTravellsContent.PropTypes={
+IdeasForTravellsContent.propTypes={
   ideasCategory: PropTypes.string.isRequired
 }
 

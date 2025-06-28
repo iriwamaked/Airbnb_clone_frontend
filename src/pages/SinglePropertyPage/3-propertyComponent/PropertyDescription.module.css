@@ -1,0 +1,74 @@
+.container :not(.material-symbols-outlined):not([class*="material-symbols"]){
+    font-family: "Nunito Sans", sans-serif;
+   
+}
+
+.container :not(.material-symbols-outlined):not([class*="material-symbols"]):not(h5){
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.container h5{
+    font-weight: 700;
+    margin: 1.5rem 0;
+}
+
+
+.divider {
+  border: none;
+  border-top: 1px solid #47433C;
+  margin: 15px 0;
+  opacity: 1;
+}
+
+.text{
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 400;
+}
+
+.text h6{
+    font-weight: 700;
+}
+
+.custom-link{
+    font-weight: 700;
+    color: #211E1A !important;
+    
+}
+
+.img{
+    max-width: 317px;
+    max-height: 218px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+}
+
+.centered-link {
+  display: flex;
+  align-items: center; /* Центрирует иконку и текст по вертикали */
+  gap: 10px;            /* Отступ между иконкой и текстом */
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.centered-link span:last-child {
+  position: relative;
+  top: -2px; /* или подбери значение по вкусу */
+}
+
+.custom-btn{
+    border: 1px solid #211E1A;
+    border-radius: 16px; 
+    padding: 10px;
+    text-align: center;
+    font-weight: 700 !important;
+   
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+        height: 100%;
+}

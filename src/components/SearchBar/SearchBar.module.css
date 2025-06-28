@@ -15,6 +15,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   position: relative;
   gap: 20px;
+  min-width: 845px;
 }
 
 .searchField {

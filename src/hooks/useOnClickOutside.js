@@ -10,7 +10,7 @@ const useOnClickOutside=(ref,handler)=>{
         };
 
         document.addEventListener('mousedown', listener);
-        document.addEventListener('touchstart', listener); //для мобилльных
+        document.addEventListener('touchstart', listener); //для мобильных
 
         return()=>{
             document.removeEventListener('mousedown', listener);

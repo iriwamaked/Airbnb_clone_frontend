@@ -1,6 +1,6 @@
 import styles from './SinglePropertyPage.module.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import {Helmet} from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 
 import FirstPropertyComponent from './1-propertyComponent/FirstPropertyComponent';
 import PropertyImagesComponent from './2-propertyImages/PropertyImagesComponent';
@@ -73,14 +73,18 @@ const SinglePropertyPage = () => {
     }
     if (!property) return <div className="d-flex justify-content-center align-items-center">Помилка завантаження данних</div>
 
-     const fullUrl = `https://localhost:5173/property/${property.id}`;
+    const fullUrl = `https://localhost:5173/property/${property.id}`;
 
     return (
         <div className={styles.container}>
             <Helmet>
                 <title>{property.title} - Оголошення</title>
-                 <meta property="og:title" content={property.title} />
-                <meta property="og:description" content={property.shortDescription || 'Оголошення про житло'} />
+                <meta property="og:title" content={property.title} />
+                <meta property="og:description" content={
+                    property?.location && property?.shortdescription
+                        ? `Уютное жильё в ${property.location}. ${property.shortdescription}`
+                        : 'Оголошення про житло'
+                } />
                 <meta property="og:image" content={property.images?.[0]?.src || ''} />
                 <meta property="og:url" content={fullUrl} />
                 <meta property="og:type" content="website" />
@@ -92,8 +96,7 @@ const SinglePropertyPage = () => {
                 reviewsNumber={property.reviewsNumber}
                 location={`${property.city}, ${property.region}, ${property.country}`}
                 imageUrl={property.images[0].src}
-                shortDescription = {property.shortDescription}
-
+                shortDescription={property.shortDescription}
             />
             <PropertyImagesComponent images={property.images} />
             <Container className="p-0 mt-5">
@@ -125,31 +128,26 @@ const SinglePropertyPage = () => {
                             maxGuests={property.guestsRules.maxGuestsNumber}
                             petsAllowed={property.guestsRules.petsAllowed}
                             maxPets={property.guestsRules.maxPetsNumber}
-                            petsAddedPrice={property.guestsRules.petsAddedPrice} 
-                            openModal={openModal}/>
+                            petsAddedPrice={property.guestsRules.petsAddedPrice}
+                            openModal={openModal} />
                     </Col>
                 </Row>
             </Container>
-            {/* <div className={styles.testFloatingBlock}>
-                <PropertyDescription/>
-                <Widget/>
-            </div> */}
+         
             <hr className={`my-3 mb-5 ${styles.divider}`} />
+
             <PropertyRating
                 rating={property.rating}
                 reviewsNumber={property.reviewsNumber}
                 ratingCriterias={property.ratingCriterias}
             />
 
-            {/* <hr className={`my-3 ${styles.divider}`} /> */}
-
             <PropertyReview comments={property.comments} openModal={openModal} />
 
             <PropertyLocation coords={property.locationCoords}
                 location={`${property.city}, ${property.region}, ${property.country}`}
                 locationDescription={property.locationDescription}
-                openModal={openModal}
-            />
+                openModal={openModal}/>
 
             <PropertyOwner owner={property.owner} openModal={openModal} />
 

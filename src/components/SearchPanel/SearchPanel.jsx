@@ -47,8 +47,14 @@ const SearchPanel = () => {
         suggestions: { status, data },
         setValue,
         clearSuggestions
-    } = usePlacesAutocomplete();
+    } = usePlacesAutocomplete({
+        requestOptions: {
+            //ограничение по показу только украинских населенных пунктов!
+            componentRestrictions: {country: 'ua'},
+        },
+    });
 
+    
     // // Синхронизация value и location
     // const [location, setLocalLocation] = useState(value);
     // useEffect(() => {
@@ -72,7 +78,7 @@ const SearchPanel = () => {
                 //Обновляем строку поиска
                 setValue(description, false);
                 dispatch(setLocation(details));
-                console.log(details);
+                // console.log(details);
                 clearSuggestions();
             }
         } catch (err) {

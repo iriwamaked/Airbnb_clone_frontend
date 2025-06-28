@@ -8,17 +8,11 @@ import { setDateRange, clearDateRange } from '../../../store/slices/dataRangeSli
 import {selectedStartDate, selectedEndDate } from './../../../store/selectors/selectDateRange'
 
 const PropertyCalendar = ({ city, busyDates }) => {
-    // // Стейт для выбранного диапазона
-    // const [range, setRange] = useState([null, null]);
-    // const [startDate, endDate] = range;
-
     const dispatch = useDispatch();
     //обертка вокруг календаря
     const wrapperRef = useRef(null);
-
     // const startDate = useSelector(state => state.dateRange.startDate ? new Date(state.dateRange.startDate) : null);
     // const endDate = useSelector(state => state.dateRange.endDate ? new Date(state.dateRange.endDate) : null)
-
     const startDate = useSelector(selectedStartDate);
     const endDate = useSelector(selectedEndDate);
     const nightsCount = useMemo(() => {

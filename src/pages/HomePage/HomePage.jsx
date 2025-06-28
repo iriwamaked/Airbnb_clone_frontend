@@ -6,6 +6,7 @@ import propertiesData from "../../data/properties"; // ✅ Импортируе�
 import styles from "./HomePage.module.css";
 import IdeasForTravellsPage from "../../components/IdeasForTravels/IdeasForTravellsPage/IdeasForTravellsPage";
 
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   const [properties, setProperties] = useState(propertiesData);
@@ -29,6 +30,11 @@ const HomePage = () => {
 
   return (
     <div className={styles.home}>
+       <Helmet>
+        <title>Головна - пошук житла</title>
+        <meta name="description" content="Знайдіть ідеальне житло для Вашої подорожі." />
+      </Helmet>
+
       <CategoryFilters 
           className={styles.stickyFilters}
           selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />

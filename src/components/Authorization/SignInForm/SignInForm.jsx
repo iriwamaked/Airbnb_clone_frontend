@@ -47,7 +47,7 @@ const SignInForm = ({ onClose, onSwitch }) => {
   } else if (isNotVerified) {
     navigate("/verification");
   } else {
-    navigate("/home"); // или /dashboard, как тебе надо
+    navigate("/"); // или /dashboard, как тебе надо
   }
       onClose();
     } else {

@@ -121,6 +121,8 @@ const SinglePropertyPage = () => {
                         /></Col>
                     <Col md={6} lg={5}>
                         <Widget rating={property.rating}
+                            title={property.title}
+  image={property.images[0]?.src || ""} // ✅ только строка — сам URL
                             reviewsNumber={property.reviewsNumber}
                             busyDates={property.booked_dates}
                             pricePerNight={property.pricePerNight}

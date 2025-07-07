@@ -82,16 +82,26 @@ const Header = ({ onOpenModal, user, onLogout, onToggleMap, isAuthenticated}) =>
           )}
 
           {isAuthenticated ? (
-            <div className={styles.userMenu}>
-              <span>Привет, {user?.username}</span>
-              <button className={styles.logoutBtn} onClick={onLogout}>Выйти</button>
-            </div>
-          ) : (
-            <button className={styles.loginBtn} onClick={onOpenModal}>
-              <span className="material-icons">person</span>
-            </button>
+  <div className={styles.userAvatarWrapper}>
+    <Link to="/profile">
+      {user.avatar ? (
+        <img src={user.avatar} alt="avatar" className={styles.userAvatarImg} />
+      ) : (
+        <div className={styles.userAvatarCircle}>
+          {user.username?.charAt(0).toUpperCase()}
+        </div>
+      )}
+    </Link>
+    <button onClick={onLogout} className={styles.logoutIcon}>
+      <span className="material-icons">logout</span>
+    </button>
+  </div>
+) : (
+  <button className={styles.loginBtn} onClick={onOpenModal}>
+    <span className="material-icons">person</span>
+  </button>
+)}
 
-          )}
 
         </div>
       </div>

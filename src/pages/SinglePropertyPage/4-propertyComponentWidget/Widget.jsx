@@ -7,9 +7,44 @@ import CustomDatePicker from '../../../components/CustomDatePicker/CustomDatePic
 import { setDateRange, clearDateRange } from '../../../store/slices/dataRangeSlice';
 import { useMemo } from 'react';
 import GuestSelector from '../../../components/GuestsSelector/GuestSelector';
+import { useNavigate } from "react-router-dom";
 
 
-const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, busyDates, maxGuests, petsAllowed, maxPets, petsAddedPrice, openModal}) => {
+
+const Widget = ({
+  title,
+  image,
+  rating,
+  reviewsNumber,
+  pricePerNight,
+  priceForAddedServices,
+  busyDates,
+  maxGuests,
+  petsAllowed,
+  maxPets,
+  petsAddedPrice,
+  openModal
+}) => {
+const navigate = useNavigate();
+
+const handleBooking = () => {
+  navigate("/checkout", {
+    state: {
+      title,
+      image,
+      pricePerNight,
+      nights: nightsCount,
+      cleaningFee: totalAddedServicesPrice + totalPetsAddedPrice,
+      total: totalPricePerNight,
+      checkIn: formattedStart,
+      checkOut: formattedEnd,
+      guests: totalGuests,
+      rating,
+      reviews: reviewsNumber
+    }
+  });
+};
+
 
     const startDateRaw = useSelector(state => state.dateRange.startDate);
     const endDateRaw = useSelector(state => state.dateRange.endDate);
@@ -150,7 +185,8 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
                 </Row>
             </Container>
            
-            <button className={styles.button} onClick={openModal}>
+            <button className={styles.button} onClick={handleBooking}>
+
                 Забронювати
             </button>
 
@@ -271,6 +307,8 @@ const Widget = ({ rating, reviewsNumber, pricePerNight, priceForAddedServices, b
 Widget.propTypes = {
     rating: PropTypes.number.isRequired,
     reviewsNumber: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     pricePerNight: PropTypes.number.isRequired,
     priceForAddedServices: PropTypes.arrayOf(
         PropTypes.shape({

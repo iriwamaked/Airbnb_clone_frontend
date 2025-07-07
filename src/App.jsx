@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import SimpleFooter from "./components/SimpleFooter/SimpleFooter";
 
 import HomePage from "./pages/HomePage/HomePage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import ListingPage from "./pages/ListingPage/ListingPage";
 import PropertyPageMain from "./pages/PropertyPageMain/PropertyPageMain";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -62,6 +63,7 @@ function App() {
           <Route path="/oneproperty" element={<OnePropertyPage />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/singleproperty" element={<SinglePropertyPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </main>
 

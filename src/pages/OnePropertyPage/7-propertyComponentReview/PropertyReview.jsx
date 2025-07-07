@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import styles from './PropertyReview.module.css';
+import styles from './Propertyreview.module.css';
 
 const PropertyReview = () => {
     return (
